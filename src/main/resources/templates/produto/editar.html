@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar Padrão</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                font-size: 1.5rem;
+                color: #333;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .btn-right {
+                float: right;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info btn-right">Principal</a>
+            <h1>Editar Padrão</h1>
+            <form action="#" th:action="@{/ibmec-test/produto/atualizar}" th:object="${produto}" method="post">
+                <div class="form-group">
+                    <label for="idProduto">Código</label>
+                    <input type="text" class="form-control" id="idProduto" th:field="*{idProduto}" placeholder="Código" maxlength="20" readonly required>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome" maxlength="20" required>
+                </div>
+                <div class="form-group">
+                    <label for="percentual">Preço</label>
+                    <input type="number" class="form-control" id="percentual" th:field="*{percentual}" placeholder="percentual" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Disponivel</label>
+                    <select class="form-control" th:field="*{status}" id="status">
+                        <option th:value="SIM" th:text="Sim"></option>
+                        <option th:value="NÃO" th:text="Não"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-control" th:field="*{categoria}" id="categoria">
+                        <option th:value="LICOR" th:text="Licor"></option>
+                        <option th:value="GELEIA" th:text="Geleia"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="emdestaque">Em Destaque</label>
+                    <select class="form-control" th:field="*{emdestaque}" id="emdestaque">
+                        <option th:value="SIM" th:text="Sim"></option>
+                        <option th:value="NÃO" th:text="Não"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" th:field="*{descricao}" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

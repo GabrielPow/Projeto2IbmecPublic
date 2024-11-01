@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Somos - Menina Sabores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar-custom {
+            background-color: #992800;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar-custom .nav-link {
+            color: #fff !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #FAC140 !important;
+        }
+
+        .navbar-custom .nav-link.active {
+            color: #fff !important;
+        }
+
+        .navbar-custom .nav-link.active:hover {
+            color: #FAC140 !important;
+        }
+
+        /* Estilo do ícone de carrinho */
+        .navbar-custom .cart-icon {
+            color: #fff;
+            margin-left: 15px;
+        }
+
+        .navbar-custom .cart-icon:hover {
+            color: #FAC140;
+        }
+
+        header {
+            background-color: #F2C230;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #731B14;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #BF3E21;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            font-weight: lighter;
+        }
+
+        .highlight-section {
+            background-color: #F26B1D;
+            color: white;
+            padding: 50px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .stat {
+            flex: 1;
+            margin: 0 15px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .stat h2 {
+            font-size: 40px;
+            color: #F2F2F2;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #BF3E21;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        footer nav ul {
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        footer nav ul li {
+            margin: 0 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        footer nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Estilos para a timeline */
+        .timeline-section {
+            padding: 50px 0;
+            background-color: #fff;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-section h1 {
+            font-size: 36px;
+            color: #BF3E21;
+            margin-bottom: 30px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #F26B1D;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .timeline-item-content {
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            position: relative;
+            margin: 20px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-item-content {
+            margin-left: 0;
+            text-align: right;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-item:nth-child(even) .timeline-item-content {
+            margin-left: 30px;
+            text-align: left;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-item-content h2 {
+            font-size: 24px;
+            color: #731B14;
+            margin-bottom: 10px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .timeline-item-content p {
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #F26B1D;
+            border-radius: 50%;
+            top: 15px;
+            left: calc(50% - 10px);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menina Sabores</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/ibmec-test/index}">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" th:href="@{/ibmec-test/index/quemsomos}">Quem somos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/ibmec-test/produto/listaProduto}">Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/ibmec-test/index/contato}">Contato</a>
+          </li>
+        </ul>
+        <!-- Ícone do Carrinho -->
+        <a href="{{ url_for('cart') }}" class="cart-icon">
+          <i class="fas fa-shopping-cart fa-2x"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+<section id="quem-somos">
+    <div class="container">
+        <h1>Quem Somos</h1>
+        <p class="tagline">Acolhendo memórias e sabores ancestrais</p>
+        <p>Na Menina Sabores, somos mais do que uma marca de receitas quilombolas. Nós valorizamos a cultura, a ancestralidade e o afeto que cada receita traz. Cada doce, geleia ou licor carrega uma história, um pedacinho da nossa família, das raízes que fazem parte de quem somos hoje.</p>
+        <p>Nossa missão é levar até você produtos que não só aquecem o paladar, mas também o coração. Acreditamos que a memória afetiva, o acolhimento e a tradição são os ingredientes essenciais em tudo o que fazemos.</p>
+    </div>
+</section>
+
+<section id="historia" class="highlight-section">
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <h2>4 anos</h2>
+                <p>De tradição familiar em receitas quilombolas, desde 2020</p>
+            </div>
+            <div class="stat">
+                <h2>Mais de 20 produtos</h2>
+                <p>Incluindo geleias e licores feitos artesanalmente com ingredientes naturais</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção de Timeline -->
+<section class="timeline-section">
+    <h1>Processo de Produção - Menina Sabores</h1>
+    <div class="timeline">
+
+        <!-- Etapa 1: Colheita -->
+        <div class="timeline-item">
+            <div class="timeline-item-content">
+                <h2>Primeira Etapa - Colheita</h2>
+                <p>O pai de Michelle cuida da colheita das frutas, garantindo que os melhores frutos sejam escolhidos para a produção das geleias e licores.</p>
+            </div>
+            <img src="/images/index/colhendo.png" alt="Imagem de colheita dos frutos">
+        </div>
+
+        <!-- Etapa 2: Produção -->
+        <div class="timeline-item">
+            <img src="/images/index/cozinha.png" alt="Imagem de produção de geleias e licores">
+            <div class="timeline-item-content">
+                <h2>Segunda Etapa - Produção</h2>
+                <p>Michelle e sua mãe se dedicam à produção artesanal, criando geleias e licores com receitas quilombolas que passam de geração em geração.</p>
+            </div>
+        </div>
+
+        <!-- Etapa 3: Produto Final -->
+        <div class="timeline-item">
+            <div class="timeline-item-content">
+                <h2>Terceira Etapa - Produto Pronto</h2>
+                <p>As geleias e licores são embalados e prontos para serem entregues aos clientes, trazendo sabor e memória afetiva em cada frasco.</p>
+            </div>
+            <img src="/images/index/etapa3.png" alt="Imagem do produto final - geleias e licores">
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>Menina Sabores © 2024 - Todos os direitos reservados.</p>
+    <nav> 
+        <ul>
+            <li><a href="#nossas-marcas">Nossas Receitas</a></li>
+            <li><a href="#historia">Nossa História</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
