@@ -219,7 +219,7 @@
 </section>
 
 <section class="product-section">
-      <h2>Teste de Destaque</h2>
+      <h2>Licor</h2>
       <table class="table table-bordered">
         <thead class="thead-light">
             <tr>
@@ -230,6 +230,28 @@
         </thead>
         <tbody>
             <tr th:each="produto : ${produtosLicor}">
+            <td th:text="${produto.nome}"></td>
+            <td th:text="${produto.percentual}"></td>
+            <td>
+                <a th:href="@{/ibmec-test/produto/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-success btn-sm">Ver Mais</a>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="product-section">
+      <h2>Geleia</h2>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Ações<th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="produto : ${produtosGeleia}">
             <td th:text="${produto.nome}"></td>
             <td th:text="${produto.percentual}"></td>
             <td>

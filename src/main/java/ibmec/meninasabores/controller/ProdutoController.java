@@ -72,6 +72,12 @@ public class ProdutoController {
                  .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                  .collect(Collectors.toList());
          model.addAttribute("produtosLicor", ProdutosLicor);
+         List<Produto> ProdutosGeleia = produtos.stream()
+                 .filter(Produto::isStatus)
+                 .filter(produto -> "Geleia".equalsIgnoreCase(produto.getCategoria().getNome()))
+                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                 .collect(Collectors.toList());
+         model.addAttribute("produtosGeleia", ProdutosGeleia);
          return "/produto/listaProduto";
      }
      
