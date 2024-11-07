@@ -219,7 +219,7 @@
 </section>
 
 <section class="product-section">
-      <h2>Teste de Licor</h2>
+      <h2>Teste de Destaque</h2>
       <table class="table table-bordered">
         <thead class="thead-light">
             <tr>
@@ -240,63 +240,7 @@
     </table>
 </section>
 
-<section class="product-section">
-      <h2>Teste de Geleia</h2>
-      <table class="table table-bordered">
-        <thead class="thead-light">
-            <tr>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Ações<th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="produto : ${produtosGeleia}">
-            <td th:text="${produto.nome}"></td>
-            <td th:text="${produto.percentual}"></td>
-            <td>
-                <a th:href="@{/ibmec-test/produto/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-success btn-sm">Ver Mais</a>
-            </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    
-    <!-- Seção de Geleias -->
-    <section class="product-section">
-      <h2>Geleias</h2>
-      <div class="product-grid">
-        {% for produto_id, produto in produtos.items() %}
-          {% if 'geleia' in produto_id %}
-          <div class="product-card">
-            <img src="/images/produto/placeholder.jpg" alt="Imagem do Produto">
-            <h3>{{ produto['nome'] }}</h3>
-            <p>{{ produto['descricao'] }}</p>
-            <p><strong>{{ produto['preco'] }}</strong></p>
-            <a href="{{ url_for('produto_detalhes', produto_id=produto_id) }}" class="btn btn-primary">Mais Detalhes</a>
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
 
-    <!-- Seção de Licores -->
-    <section class="product-section">
-      <h2>Licores</h2>
-      <div class="product-grid">
-        {% for produto_id, produto in produtos.items() %}
-          {% if 'licor' in produto_id %}
-          <div class="product-card">
-            <img src="/images/produto/placeholder.jpg" alt="Imagem do Produto">
-            <h3>{{ produto['nome'] }}</h3>
-            <p>{{ produto['descricao'] }}</p>
-            <p><strong>{{ produto['preco'] }}</strong></p>
-            <a href="{{ url_for('produto_detalhes', produto_id=produto_id) }}" class="btn btn-primary">Mais Detalhes</a>
-          </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
 
     <!-- Rodapé -->
     <footer class="footer py-5" style="background-color: #992800; color: #fff;">

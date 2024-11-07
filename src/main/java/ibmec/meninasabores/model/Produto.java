@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.UUID;
@@ -34,16 +36,21 @@ public class Produto implements Serializable {
     private double percentual;
     @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
-    @Column(name = "CATEGORIA", nullable = false)
-    private String categoria;
-    //@Column(name = "PRODUTO_IMAGEM", nullable = false)
-    //private byte[] image;
-    //@Column(name = "PRODUTO_TABELA_NUTRITIVA", nullable = false)
-    //private byte[] tnutrient;
     @Column(name = "STATUS", nullable = false)
     private String status;
     @Column(name = "DESTAQUE",nullable = false)
     private String emdestaque;
+    @ManyToOne
+    @JoinColumn(name = "CATEGORIA_ID",nullable = false)
+    private Categoria categoria;
+    //@ManyToOne
+    //@JoinColumn(name = "IMAGEM_ID", nullable = false)
+    //private Imagem imagem;
+    //@ManyToOne
+    //@JoinColumn(name = "TABELA_NUTRITIVA", nullable = false)
+    //private Imagem tnutritiva;
+    
+    
     
     public Produto() {
     
@@ -87,22 +94,6 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-/*    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }*/
-
     public boolean isStatus() {
         return "SIM".equals(status);
     }
@@ -127,15 +118,28 @@ public class Produto implements Serializable {
         return "SIM".equals(emdestaque);
     }
 
-/*    public byte[] getTnutrient() {
-        return tnutrient;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setTnutrient(byte[] tnutrient) {
-        this.tnutrient = tnutrient;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    /*public Imagem getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(Imagem imagem) {
+        this.imagem = imagem;
+    }
+
+    public Imagem getTnutritiva() {
+        return tnutritiva;
+    }
+
+    public void setTnutritiva(Imagem tnutritiva) {
+        this.tnutritiva = tnutritiva;
     }*/
-    
-    
-    
     
 }
