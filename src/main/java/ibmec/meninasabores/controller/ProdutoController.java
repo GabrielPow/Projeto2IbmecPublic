@@ -4,7 +4,9 @@
  */
 package ibmec.meninasabores.controller;
 
+import ibmec.meninasabores.model.Categoria;
 import ibmec.meninasabores.model.Produto;
+import ibmec.meninasabores.repository.CategoriaRepository;
 import ibmec.meninasabores.service.ProdutoService;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -34,6 +36,9 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
     
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+    
     @GetMapping("/listar")
      public String listar(ModelMap model) {
          List<Produto> produtos = produtoService.findAll();
@@ -46,7 +51,9 @@ public class ProdutoController {
      
      
      @GetMapping("/novo")
-     public String inserir(Produto produto) {
+     public String inserir(Produto produto, ModelMap model) {
+         List<Categoria> categorias = categoriaRepository.findAll();
+         model.addAttribute("categorias",categorias);
          return "/produto/inserir";
      }
      
@@ -61,17 +68,16 @@ public class ProdutoController {
          model.addAttribute("produtosDestaque", sortedProdutos);
          List<Produto> ProdutosLicor = produtos.stream()
                  .filter(Produto::isStatus)
-                 .filter(produto -> "LICOR".equals(produto.getCategoria()))
+                 .filter(produto -> "Licor".equalsIgnoreCase(produto.getCategoria().getNome()))
                  .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                  .collect(Collectors.toList());
          model.addAttribute("produtosLicor", ProdutosLicor);
          List<Produto> ProdutosGeleia = produtos.stream()
                  .filter(Produto::isStatus)
-                 .filter(produto -> "GELEIA".equals(produto.getCategoria()))
+                 .filter(produto -> "Geleia".equalsIgnoreCase(produto.getCategoria().getNome()))
                  .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                  .collect(Collectors.toList());
          model.addAttribute("produtosGeleia", ProdutosGeleia);
-         
          return "/produto/listaProduto";
      }
      
@@ -91,6 +97,8 @@ public class ProdutoController {
      @GetMapping("/editar/{id}")
      public String editar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("produto", produtoService.findById(id));
+         List<Categoria> categorias = categoriaRepository.findAll();
+         model.addAttribute("categorias", categorias);
          return "/produto/editar";
      }
      
