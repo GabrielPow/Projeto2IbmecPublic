@@ -5,8 +5,10 @@
 package ibmec.meninasabores.controller;
 
 import ibmec.meninasabores.model.Categoria;
+import ibmec.meninasabores.model.ImagemEntity;
 import ibmec.meninasabores.model.Produto;
-import ibmec.meninasabores.repository.CategoriaRepository;
+import ibmec.meninasabores.service.CategoriaService;
+import ibmec.meninasabores.service.ImagemService;
 import ibmec.meninasabores.service.ProdutoService;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -37,7 +39,10 @@ public class ProdutoController {
     private ProdutoService produtoService;
     
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private CategoriaService categoriaRepository;
+    
+    @Autowired
+    private ImagemService imageService;
     
     @GetMapping("/listar")
      public String listar(ModelMap model) {
@@ -53,6 +58,8 @@ public class ProdutoController {
      @GetMapping("/novo")
      public String inserir(Produto produto, ModelMap model) {
          List<Categoria> categorias = categoriaRepository.findAll();
+         List<ImagemEntity> imagens = imageService.findAll();
+         model.addAttribute("imagens",imagens);
          model.addAttribute("categorias",categorias);
          return "/produto/inserir";
      }

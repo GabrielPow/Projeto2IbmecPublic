@@ -43,7 +43,7 @@
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
-                        <th>ID</th>
+                        <th>Imagem</th>
                         <th>Nome</th>
                         <th>Preço</th>
                         <th>Disponivel</th>
@@ -54,7 +54,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="produto : ${produtos}">
-                        <td th:text="${produto.idProduto}"></td>
+                        <td th:text="${produto.imagem.name}"></td>
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.percentual}"></td>
                         <td th:text="${produto.status}"></td>
@@ -74,8 +74,11 @@
             </table>
         </div>
         
-        <div class="d-flex justify-content-between mb-1">
+        <div class="container">
+            <div class="d-flex justify-content-between mb-3">
                 <a href="#" th:href="@{/ibmec-test/categoria/listar}" class="btn btn-info">Categoria Ver</a>
+                <a href="/files/upload-page" class="btn btn-primary">FileInsert</a>
+            </div>
         </div>
 
         

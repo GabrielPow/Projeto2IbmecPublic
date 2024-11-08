@@ -11,9 +11,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -43,12 +45,13 @@ public class Produto implements Serializable {
     @ManyToOne
     @JoinColumn(name = "CATEGORIA_ID",nullable = false)
     private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "IMAGEM_ID", nullable = false)
+    private ImagemEntity imagem;
     //@ManyToOne
-    //@JoinColumn(name = "IMAGEM_ID", nullable = false)
-    //private Imagem imagem;
-    //@ManyToOne
-    //@JoinColumn(name = "TABELA_NUTRITIVA", nullable = false)
-    //private Imagem tnutritiva;
+    //@JoinColumn(name = "TABELA_NUTRITIVA_ID", nullable = false)
+    //private ImagemEntity tnutritiva;
+
     
     
     
@@ -126,20 +129,22 @@ public class Produto implements Serializable {
         this.categoria = categoria;
     }
 
-    /*public Imagem getImagem() {
+    public ImagemEntity getImagem() {
         return imagem;
     }
 
-    public void setImagem(Imagem imagem) {
+    public void setImagem(ImagemEntity imagem) {
         this.imagem = imagem;
     }
 
-    public Imagem getTnutritiva() {
+    /*public ImagemEntity getTnutritiva() {
         return tnutritiva;
     }
 
-    public void setTnutritiva(Imagem tnutritiva) {
+    public void setTnutritiva(ImagemEntity tnutritiva) {
         this.tnutritiva = tnutritiva;
     }*/
+
+    
     
 }

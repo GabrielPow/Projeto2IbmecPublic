@@ -9,8 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -29,6 +32,12 @@ public class ImagemEntity implements Serializable{
     private byte[] data;
 
     private String type;
+    
+    @OneToMany(mappedBy = "imagem")
+    private List<Produto> produtosImagem;
+    //@OneToMany(mappedBy = "tnutritiva")
+    //private List<Produto> produtosTN;
+    
 
     // Getters e setters
     public Long getId() {
@@ -62,5 +71,22 @@ public class ImagemEntity implements Serializable{
     public void setType(String type) {
         this.type = type;
     }
+
+    public List<Produto> getProdutosImagem() {
+        return produtosImagem;
+    }
+
+    public void setProdutosImagem(List<Produto> produtosImagem) {
+        this.produtosImagem = produtosImagem;
+    }
+
+    /*public List<Produto> getProdutosTN() {
+        return produtosTN;
+    }
+
+    public void setProdutosTN(List<Produto> produtosTN) {
+        this.produtosTN = produtosTN;
+    }*/
+    
     
 }

@@ -36,4 +36,8 @@ public class ImagemService {
     public ImagemEntity getFile(Long id) {
         return imagemRepository.findById(id).orElse(null);
     }
+    
+    public List<ImagemEntity> findAll() {
+        return imagemRepository.findAll();
+    }
 }
