@@ -60,5 +60,30 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
     
+    @GetMapping("/ver/{id}")
+    public ResponseEntity<byte[]> displayFile(@PathVariable Long id) {
+        ImagemEntity ImagemEntity = ImageService.getFile(id);
+
+        if (ImagemEntity != null) {
+            String mimeType = determineMimeType(ImagemEntity.getName());
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_TYPE, mimeType)
+                    .body(ImagemEntity.getData());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+    
+    private String determineMimeType(String fileName) {
+        if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+            return "image/jpeg";
+        } else if (fileName.endsWith(".png")) {
+            return "image/png";
+        } else if (fileName.endsWith(".gif")) {
+            return "image/gif";
+        }
+     // Add more types if needed
+    return "application/octet-stream"; // Default type if unknown
+    }
+    
     
 }

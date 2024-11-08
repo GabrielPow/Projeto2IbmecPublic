@@ -197,10 +197,11 @@
     </header>
 <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info">Admin</a>
 <section class="product-section">
-      <h2>Teste de Destaque</h2>
+      <h2>Destaque</h2>
       <table class="table table-bordered">
         <thead class="thead-light">
             <tr>
+                <th>Imagem</th>
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Ações<th>
@@ -208,6 +209,7 @@
         </thead>
         <tbody>
             <tr th:each="produto : ${produtosDestaque}">
+            <td><img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
             <td th:text="${produto.nome}"></td>
             <td th:text="${produto.percentual}"></td>
             <td>
@@ -223,6 +225,7 @@
       <table class="table table-bordered">
         <thead class="thead-light">
             <tr>
+                <th>Imagem</th>
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Ações<th>
@@ -230,6 +233,7 @@
         </thead>
         <tbody>
             <tr th:each="produto : ${produtosLicor}">
+            <td><img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
             <td th:text="${produto.nome}"></td>
             <td th:text="${produto.percentual}"></td>
             <td>
@@ -245,6 +249,7 @@
       <table class="table table-bordered">
         <thead class="thead-light">
             <tr>
+                <th>Imagem</th>
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Ações<th>
@@ -252,6 +257,7 @@
         </thead>
         <tbody>
             <tr th:each="produto : ${produtosGeleia}">
+            <td><img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
             <td th:text="${produto.nome}"></td>
             <td th:text="${produto.percentual}"></td>
             <td>

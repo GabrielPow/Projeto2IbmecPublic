@@ -205,7 +205,7 @@
     <section class="product-section">
       <div class="product-info">
         <div class="product-image">
-          <img src="/images/produto/placeholder.jpg" alt="Imagem do Produto">
+          <img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" alt="Imagem do Produto">
         </div>
         <div class="product-details">
           <h2 th:text="${produto.nome}">Nome de Produto</h2>

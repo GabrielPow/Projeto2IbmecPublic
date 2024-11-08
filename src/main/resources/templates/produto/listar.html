@@ -54,7 +54,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="produto : ${produtos}">
-                        <td th:text="${produto.imagem.name}"></td>
+                        <td><img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.percentual}"></td>
                         <td th:text="${produto.status}"></td>
@@ -77,7 +77,7 @@
         <div class="container">
             <div class="d-flex justify-content-between mb-3">
                 <a href="#" th:href="@{/ibmec-test/categoria/listar}" class="btn btn-info">Categoria Ver</a>
-                <a href="/files/upload-page" class="btn btn-primary">FileInsert</a>
+                <a href="/files/upload-page" class="btn btn-primary">Adicionar Imagens</a>
             </div>
         </div>
 

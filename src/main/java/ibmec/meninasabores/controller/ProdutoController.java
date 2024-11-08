@@ -106,6 +106,8 @@ public class ProdutoController {
          model.addAttribute("produto", produtoService.findById(id));
          List<Categoria> categorias = categoriaRepository.findAll();
          model.addAttribute("categorias", categorias);
+         List<ImagemEntity> imagens = imageService.findAll();
+         model.addAttribute("imagens",imagens);
          return "/produto/editar";
      }
      
