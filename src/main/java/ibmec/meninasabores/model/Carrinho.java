@@ -10,8 +10,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -25,44 +30,37 @@ public class Carrinho implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "ID_PRODUTO")
+    @Column(name = "ID_CARRINHO")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idProduto;
-    @Column(name = "NOME", nullable = false, unique = true, length = 20)
-    private String nome;
+    private UUID idCarrinho;
     @Column(name = "PRECO", nullable = false)
     private double percentual;
-    @Column(name = "CATEGORIA", nullable = false)
-    private String categoria;
     @Column(name = "STATUS", nullable = false)
     private String status;
+    @ManyToMany
+    @JoinTable(
+    name = "CARRINHO_PRODUTOS",
+    joinColumns = @JoinColumn(name = "CARRINHO_ID"),
+    inverseJoinColumns = @JoinColumn(name = "PRODUTO_ID")
+    )
+    private List<Produto> cProdutos = new ArrayList<>();
 
     
     public Carrinho() {
     
     }
     
-    public Carrinho(String nome, double percentual, String categoria, String status) {
-        this.nome = nome;
+    public Carrinho(double percentual, String categoria, String status) {
         this.percentual = percentual;
-        this.categoria = categoria;
         this.status = status;
     }
 
-    public UUID getIdProduto() {
-        return idProduto;
+    public UUID getIdCarrinho() {
+        return idCarrinho;
     }
 
-    public void setIdProduto(UUID idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdCarrinho(UUID idCarrinho) {
+        this.idCarrinho = idCarrinho;
     }
 
     public double getPercentual() {
@@ -72,13 +70,9 @@ public class Carrinho implements Serializable{
     public void setPercentual(double percentual) {
         this.percentual = percentual;
     }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    
+    public void addPercentual(double percentual) {
+        this.percentual = this.percentual + percentual;
     }
 
     public String getStatus() {
@@ -88,8 +82,15 @@ public class Carrinho implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
+    public List<Produto> getcProdutos() {
+        return cProdutos;
+    }
+
+    public void setcProdutos(List<Produto> cProdutos) {
+        this.cProdutos = cProdutos;
+    }
+
     
     
 }

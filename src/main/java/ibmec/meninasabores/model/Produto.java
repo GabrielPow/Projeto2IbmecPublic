@@ -51,6 +51,10 @@ public class Produto implements Serializable {
     //@ManyToOne
     //@JoinColumn(name = "TABELA_NUTRITIVA_ID", nullable = false)
     //private ImagemEntity tnutritiva;
+    @ManyToMany(mappedBy ="cProdutos")
+    private List<Carrinho> Carrinhos;
+    
+    
 
     
     
@@ -145,6 +149,12 @@ public class Produto implements Serializable {
         this.tnutritiva = tnutritiva;
     }*/
 
-    
+    public List<Carrinho> getCarrinhos() {
+        return Carrinhos;
+    }
+
+    public void setCarrinhos(List<Carrinho> Carrinhos) {
+        this.Carrinhos = Carrinhos;
+    }
     
 }

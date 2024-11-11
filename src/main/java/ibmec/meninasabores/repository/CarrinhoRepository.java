@@ -5,8 +5,6 @@
 package ibmec.meninasabores.repository;
 
 import ibmec.meninasabores.model.Carrinho;
-import ibmec.meninasabores.model.Produto;
-import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author gabri
  */
 public interface CarrinhoRepository extends JpaRepository<Carrinho, UUID>{
-    Optional<Produto> findByNome(String nome);
+    
 }

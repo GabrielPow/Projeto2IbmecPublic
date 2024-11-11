@@ -210,7 +210,9 @@
         <div class="product-details">
           <h2 th:text="${produto.nome}">Nome de Produto</h2>
           <p class="product-price">R$ <span th:text="${produto.percentual}">0,00</span></p>
-          <button class="buy-button">Adicionar ao Carrinho</button>
+          <form th:action="@{/ibmec-test/carrinho/salvarProduto/{id}(id=${produto.idProduto})}" method="post">
+             <button class="buy-button">Adicionar ao Carrinho</button>
+          </form>
         </div>
       </div>
       <div class="product-description">

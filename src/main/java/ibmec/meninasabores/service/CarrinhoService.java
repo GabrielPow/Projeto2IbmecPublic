@@ -4,8 +4,8 @@
  */
 package ibmec.meninasabores.service;
 
-import ibmec.meninasabores.model.Produto;
-import ibmec.meninasabores.repository.ProdutoRepository;
+import ibmec.meninasabores.model.Carrinho;
+import ibmec.meninasabores.repository.CarrinhoRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,30 +21,26 @@ import org.springframework.stereotype.Service;
 public class CarrinhoService {
     
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private CarrinhoRepository carrinhoRepository;
 
 
-    public Produto save(Produto produto) {
-        return produtoRepository.save(produto);
+    public Carrinho save(Carrinho carrinho) {
+        return carrinhoRepository.save(carrinho);
     }
     
-    public List<Produto> findAll() {
-        return produtoRepository.findAll();
+    public List<Carrinho> findAll() {
+        return carrinhoRepository.findAll();
     }
     
-    public Optional<Produto> findById(UUID id) {
-        return produtoRepository.findById(id);
-    }
-
-    public Optional<Produto> findByNome(String nome) {
-        return produtoRepository.findByNome(nome);
+    public Optional<Carrinho> findById(UUID id) {
+        return carrinhoRepository.findById(id);
     }
 
     public void deleteById(UUID id) {
-        produtoRepository.deleteById(id);
+        carrinhoRepository.deleteById(id);
     }
 
-    public Produto update(Produto produto) {
-        return produtoRepository.save(produto);
+    public Carrinho update(Carrinho carrinho) {
+        return carrinhoRepository.save(carrinho);
     }
 }

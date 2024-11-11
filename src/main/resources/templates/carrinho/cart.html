@@ -110,18 +110,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('quem_somos') }}">Quem Somos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('lista_produtos') }}">Produtos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('contato') }}">Contato</a>
-                </li>
+              <li class="nav-item">
+                    <a class="nav-link active" href="#" th:href="@{/ibmec-test/index}">Início</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/ibmec-test/index/quemsomos}" >Quem somos</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/ibmec-test/produto/listaProduto}">Produtos</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/ibmec-test/index/contato}">Contato</a>
+              </li>
             </ul>
             <a class="nav-link" href="{{ url_for('cart') }}">
                 <i class="fas fa-shopping-cart cart-icon"></i>
@@ -130,6 +130,39 @@
     </div>
 </nav>
 
+<div class="container">
+            <h1>Carrinho</h1>
+            <div class="d-flex justify-content-between mb-3">
+                <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info">Lista de Produtos</a>
+                <a href="#" th:href="@{/ibmec-test/index}" class="btn btn-info">Principal</a>
+            </div>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th colspan="3">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="produto : ${carrinho.cProdutos}">
+                        <td th:text="${produto.idProduto}"></td>                        
+                        <td th:text="${produto.nome}"></td>
+                        <td th:text="${produto.percentual}">
+
+                        <td>
+                            <a th:href="@{/ibmec-test/produto/remover/{id}(id=${produto.idProduto})}" class="btn btn-warning btn-sm">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form th:action="@{/ibmec-test/carrinho/exportarCarrinho}" method="post">
+                <button type="submit" class="btn btn-success">Enviar Orçamento</button>
+            </form>
+</div>
+    
+    
 <!-- Container do carrinho -->
 <div class="cart-container">
     <h2>Carrinho de Compras</h2>
