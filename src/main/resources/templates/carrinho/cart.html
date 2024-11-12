@@ -150,9 +150,11 @@
                         <td th:text="${produto.idProduto}"></td>                        
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.percentual}">
+                            
+                        
 
                         <td>
-                            <a th:href="@{/ibmec-test/produto/remover/{id}(id=${produto.idProduto})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:href="@{/ibmec-test/carrinho/removerProduto/{id}(id=${produto.idProduto})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>

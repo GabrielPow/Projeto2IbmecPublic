@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar Padrão</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                font-size: 1.5rem;
+                color: #333;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .btn-right {
+                float: right;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info btn-right">Lista de Produtos</a>
+            <h1>Editar Padrão</h1>
+            <form action="#" th:action="@{/ibmec-test/carrinho/atualizar}" th:object="${carrinho}" method="post">
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" th:field="*{status}" id="status">
+                        <option th:value="Pagamento" th:text="Pagamento"></option>
+                        <option th:value="Preparação" th:text="Preparação"></option>
+                        <option th:value="Produção" th:text="Produção"></option>
+                        <option th:value="Concluido" th:text="Concluido"></option>
+                        <option th:value="Enviado" th:text="Enviado"></option>
+                        <option th:value="Finalizado" th:text="Finalizado"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="#" th:href="@{/ibmec-test/carrinho/pedidos}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

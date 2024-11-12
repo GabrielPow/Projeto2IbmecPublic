@@ -8,6 +8,7 @@ import ibmec.meninasabores.model.Carrinho;
 import ibmec.meninasabores.model.Produto;
 import ibmec.meninasabores.service.CarrinhoService;
 import ibmec.meninasabores.service.ProdutoService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
@@ -88,34 +89,62 @@ public class CarrinhoController {
      
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable UUID id, ModelMap model) {
-         model.addAttribute("produto", produtoService.findById(id));
-         return "/produto/editar";
+         model.addAttribute("carrinho", carrinhoService.findById(id));
+         return "/carrinho/editar";
     }
      
     @PostMapping("/atualizar")
-    public String atualizar(@Valid @ModelAttribute Produto produto,
+    public String atualizar(@Valid @ModelAttribute Carrinho carrinho,
              BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
-             model.addAttribute("produto", produto);
-             return "/produto/editar";
+             model.addAttribute("carrinho", carrinho);
+             return "/carrinho/editar";
          }
-         produtoService.update(produto);
-         return "redirect:/ibmec-test/produto/listar";
+         carrinhoService.update(carrinho);
+         return "redirect:/ibmec-test/carrinho/pedidos";
      }
  
      
      @GetMapping("/remover/{id}")
      public String remover(@PathVariable UUID id, ModelMap model) {
-         model.addAttribute("produto",produtoService.findById(id).orElseThrow(() ->
-                 new RuntimeException("Produto não encontrado")));
-         return "/produto/remover";
+         model.addAttribute("carrinho",carrinhoService.findById(id).orElseThrow(() ->
+                 new RuntimeException("Carrinho não encontrado")));
+         return "/carrinho/remover";
      }
      
      @PostMapping("/excluir/{id}")
      public String confirmarExclusao(@PathVariable UUID id, ModelMap model) {
          carrinhoService.deleteById(id);
-         return "redirect:/ibmec-test/produto/listar";
+         return "redirect:/ibmec-test/carrinho/pedidos";
      }
-    
+     
+    @GetMapping("/removerProduto/{id}")
+     public String removerProduto(@PathVariable UUID id, @ModelAttribute("carrinho") Carrinho carrinho, ModelMap model) {
+         for (Produto test : carrinho.getcProdutos()) {
+             if (test.getIdProduto().equals(id)) {
+                 model.addAttribute("produto",test);
+             }
+         }
+         return "/carrinho/removerProduto";
+    }
+
+
+     @PostMapping("/excluirProduto/{id}")
+     public String removeProductToCarrinho(@ModelAttribute("carrinho") Carrinho carrinho, @PathVariable UUID id, HttpSession session) {
+        Produto product = null;
+         for (Produto produto : carrinho.getcProdutos()) {
+            if (produto.getIdProduto().equals(id)) {
+                product = produto;
+            }
+        }
+        double temp = produtoService.findById(id).get().getPercentual();
+        System.out.println("Before removal: " + carrinho.getcProdutos());
+        carrinho.removeProduto(product);
+        System.out.println("After removal: " + carrinho.getcProdutos());
+        carrinho.subPercentual(temp);
+        carrinhoService.update(carrinho);
+        return "redirect:/ibmec-test/carrinho/carrinho";
+    }
+
     
 }

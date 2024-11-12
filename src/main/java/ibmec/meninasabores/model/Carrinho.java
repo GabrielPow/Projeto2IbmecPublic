@@ -74,7 +74,11 @@ public class Carrinho implements Serializable{
     public void addPercentual(double percentual) {
         this.percentual = this.percentual + percentual;
     }
-
+    
+    public void subPercentual(double temp) {
+        this.percentual = this.percentual - temp;
+    }
+    
     public String getStatus() {
         return status;
     }
@@ -90,7 +94,11 @@ public class Carrinho implements Serializable{
     public void setcProdutos(List<Produto> cProdutos) {
         this.cProdutos = cProdutos;
     }
-
     
+    public void removeProduto(Produto produto) {
+        this.cProdutos.remove(produto);
+    }
+
+
     
 }
