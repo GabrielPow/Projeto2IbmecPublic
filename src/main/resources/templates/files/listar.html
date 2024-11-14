@@ -54,10 +54,7 @@
                         <td th:text="${imagem.id}"></td>
                         <td th:text="${imagem.name}"></td>
                         <td>
-                            <a th:href="@{/ibmec-test/files/editar/{id}(id=${imagem.id})}" class="btn btn-warning btn-sm">Editar</a>
-                        </td>
-                        <td>
-                            <a th:href="@{/ibmec-test/files/remover/{id}(id=${imagem.id})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:href="@{/files/remover/{id}(id=${imagem.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>

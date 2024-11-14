@@ -28,6 +28,7 @@
             <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info btn-right">Principal</a>
             <h1>Editar Categoria</h1>
             <form action="#" th:action="@{/ibmec-test/categoria/atualizar}" th:object="${categoria}" method="post">
+                <input type="hidden" th:field="*{idCategoria}"/>
                 <div class="form-group">
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Nome" maxlength="30" required>

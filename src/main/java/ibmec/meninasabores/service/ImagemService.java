@@ -8,6 +8,7 @@ import ibmec.meninasabores.model.ImagemEntity;
 import ibmec.meninasabores.repository.ImagemRepository;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,6 +38,18 @@ public class ImagemService {
     
     public List<ImagemEntity> findAll() {
         return imagemRepository.findAll();
+    }
+    
+    public Optional<ImagemEntity> findById(Long id) {
+        return imagemRepository.findById(id);
+    }
+
+    public void deleteById(Long id) {
+        imagemRepository.deleteById(id);
+    }
+
+    public ImagemEntity update(ImagemEntity imagem) {
+        return imagemRepository.save(imagem);
     }
     
 }
