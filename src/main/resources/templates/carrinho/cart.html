@@ -159,6 +159,7 @@
                     </tr>
                 </tbody>
             </table>
+            <p th:text="${carrinho.percentual}"></p>
             <form th:action="@{/ibmec-test/carrinho/exportarCarrinho}" method="post">
                 <button type="submit" class="btn btn-success">Enviar Orçamento</button>
             </form>

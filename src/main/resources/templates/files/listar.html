@@ -34,35 +34,36 @@
     </head>
     <body>
         <div class="container">
-            <h1>Lista de Categorias</h1>
+            <h1>Lista de Imagens</h1>
             <div class="d-flex justify-content-between mb-3">
-                <a href="/ibmec-test/categoria/novo" class="btn btn-primary">Inserir</a>
-                <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info">Lista de Produtos</a>
+                <a href="/files/upload-page" class="btn btn-primary">Inserir</a>
                 <a href="#" th:href="@{/ibmec-test/index}" class="btn btn-info">Principal</a>
             </div>
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
+                        <th>Imagem</th>
                         <th>ID</th>
                         <th>Nome</th>
                         <th colspan="3">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="categoria : ${categorias}">
-                        <td th:text="${categoria.idCategoria}"></td>                        
-                        <td th:text="${categoria.nome}"></td>
-                        
+                    <tr th:each="imagem : ${imagens}">
+                        <td><img th:src="@{/files/ver/{id}(id=${imagem.id})}" class="img-fluid"></td>
+                        <td th:text="${imagem.id}"></td>
+                        <td th:text="${imagem.name}"></td>
                         <td>
-                            <a th:href="@{/ibmec-test/categoria/editar/{id}(id=${categoria.idCategoria})}" class="btn btn-warning btn-sm">Editar</a>
+                            <a th:href="@{/ibmec-test/files/editar/{id}(id=${imagem.id})}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
                         <td>
-                            <a th:href="@{/ibmec-test/categoria/remover/{id}(id=${categoria.idCategoria})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:href="@{/ibmec-test/files/remover/{id}(id=${imagem.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
         
         <!-- Bootstrap JS and dependencies -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

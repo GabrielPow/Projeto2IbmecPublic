@@ -10,6 +10,7 @@ import ibmec.meninasabores.service.CarrinhoService;
 import ibmec.meninasabores.service.ProdutoService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -46,6 +47,7 @@ public class CarrinhoController {
 
     @GetMapping("/carrinho")
     public String Carrinho(@ModelAttribute("carrinho") Carrinho carrinho, ModelMap model) {
+        carrinho.getcProdutos().sort(Comparator.comparing(produto -> produto.getNome()));
         model.addAttribute("carrinho",carrinho);
         return "carrinho/cart";
     }
@@ -64,7 +66,8 @@ public class CarrinhoController {
         Produto product = produtoService.findById(id).orElseThrow(() -> 
             new RuntimeException("Produto não encontrado"));
         carrinho.getcProdutos().add(product);
-        carrinho.addPercentual(carrinho.getcProdutos().getLast().getPercentual());
+        double temp = produtoService.findById(id).get().getPercentual();
+        carrinho.addPercentual(temp);
         if (carrinho.getStatus() == null) {
             carrinho.setStatus("Comprando");
         }
@@ -138,9 +141,7 @@ public class CarrinhoController {
             }
         }
         double temp = produtoService.findById(id).get().getPercentual();
-        System.out.println("Before removal: " + carrinho.getcProdutos());
         carrinho.removeProduto(product);
-        System.out.println("After removal: " + carrinho.getcProdutos());
         carrinho.subPercentual(temp);
         carrinhoService.update(carrinho);
         return "redirect:/ibmec-test/carrinho/carrinho";

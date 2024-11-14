@@ -4,13 +4,17 @@
  */
 package ibmec.meninasabores.controller;
 
+import ibmec.meninasabores.model.Categoria;
 import ibmec.meninasabores.model.ImagemEntity;
 import ibmec.meninasabores.service.ImagemService;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +51,16 @@ public class ImageController {
         }
         return "redirect:/files/upload-page";
     }
+    
+    @GetMapping("/listar")
+    public String listar(ModelMap model) {
+        List<ImagemEntity> imagens = ImageService.findAll();
+        List<ImagemEntity> sortedImagens = imagens.stream()
+                .sorted((imagen1, imagen2) -> imagen1.getName().compareTo(imagen2.getName()))
+                .collect(Collectors.toList());
+        model.addAttribute("imagens", sortedImagens);
+        return "/files/listar";
+    }
 
     // Método para download do arquivo
     @GetMapping("/download/{id}")
@@ -78,11 +92,8 @@ public class ImageController {
             return "image/jpeg";
         } else if (fileName.endsWith(".png")) {
             return "image/png";
-        } else if (fileName.endsWith(".gif")) {
-            return "image/gif";
         }
-     // Add more types if needed
-    return "application/octet-stream"; // Default type if unknown
+        return "application/octet-stream";
     }
     
     

@@ -33,36 +33,37 @@ public class CategoriaController {
     
     @Autowired
     private CategoriaService categoriaService;
-    
+     
     @GetMapping("/listar")
     public String listar(ModelMap model) {
-         List<Categoria> categorias = categoriaService.findAll();
-         List<Categoria> sortedCategorias = categorias.stream()
-                 .sorted((categoria1, categoria2) -> categoria1.getNome().compareTo(categoria2.getNome()))
-                 .collect(Collectors.toList());
-         model.addAttribute("categorias", sortedCategorias);
-         return "/categoria/listar";
-     }
-    
-     @GetMapping("/novo")
-     public String inserir(Categoria categoria) {
-         return "/categoria/inserir";
-     }
+        List<Categoria> categorias = categoriaService.findAll();
+        List<Categoria> sortedCategorias = categorias.stream()
+                .sorted((categoria1, categoria2) -> categoria1.getNome().compareTo(categoria2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("categorias", sortedCategorias);
+        return "/categoria/listar";
+    }
      
-     @PostMapping("/salvar")
-     public String salvar(Categoria categoria) {
+     
+    @GetMapping("/novo")
+    public String inserir(Categoria categoria, ModelMap model) {
+         return "/categoria/inserir";
+    }
+     
+    @PostMapping("/salvar")
+    public String salvar(Categoria categoria) {
          categoriaService.save(categoria);
          return "redirect:/ibmec-test/categoria/listar";
-     }
+    }
      
-     @GetMapping("/editar/{id}")
-     public String editar(@PathVariable UUID id, ModelMap model) {
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("categoria", categoriaService.findById(id));
          return "/categoria/editar";
-     }
+    }
      
-     @PostMapping("/atualizar")
-     public String atualizar(@Valid @ModelAttribute Categoria categoria,
+    @PostMapping("/atualizar")
+    public String atualizar(@Valid @ModelAttribute Categoria categoria,
              BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("categoria", categoria);
@@ -70,27 +71,28 @@ public class CategoriaController {
          }
          categoriaService.update(categoria);
          return "redirect:/ibmec-test/categoria/listar";
-     }
+    }
+ 
      
-     @GetMapping("/remover/{id}")
-     public String remover(@PathVariable UUID id, ModelMap model) {
-         model.addAttribute("categoria",categoriaService.findById(id).orElseThrow(() ->
-                 new RuntimeException("Categoria não encontrado")));
-         return "/categoria/remover";
-     }
+    @GetMapping("/remover/{id}")
+    public String remover(@PathVariable UUID id, ModelMap model) {
+        model.addAttribute("categoria",categoriaService.findById(id).orElseThrow(() ->
+                new RuntimeException("Categoria não encontrado")));
+        return "/categoria/remover";
+    }
      
-     @PostMapping("/excluir/{id}")
-     public String confirmarExclusao(@PathVariable UUID id, ModelMap model) {
+    @PostMapping("/excluir/{id}")
+    public String confirmarExclusao(@PathVariable UUID id, ModelMap model) {
          categoriaService.deleteById(id);
          return "redirect:/ibmec-test/categoria/listar";
-     }
+    }
      
-     @GetMapping("/nome/{nome}")
-     public ResponseEntity<Categoria> getCategoriaByNome(@PathVariable String nome) {
-         Optional<Categoria> categoria = categoriaService.findByNome(nome);
-         return categoria.map(ResponseEntity::ok)
-                 .orElseGet(() -> ResponseEntity.notFound().build());
-     }
-     
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<Categoria> getProdutoByNome(@PathVariable String nome) {
+        Optional<Categoria> categoria = categoriaService.findByNome(nome);
+        return categoria.map(ResponseEntity::ok)
+             .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+  
 }
 

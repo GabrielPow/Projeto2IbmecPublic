@@ -5,7 +5,6 @@
 package ibmec.meninasabores.repository;
 
 import ibmec.meninasabores.model.ImagemEntity;
-import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
