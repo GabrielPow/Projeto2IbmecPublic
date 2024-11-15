@@ -10,7 +10,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -18,41 +25,64 @@ import java.util.UUID;
  * @author gabri
  */
 @Entity
-@Table(name = "TB_Cliente", schema = "MenSab")
-public class Cliente {
+@Table(name = "TB_CLIENTE", schema = "MenSab")
+public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "ID_Cliente")
+    @Column(name = "ID_CLIENTE")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idCliente;
-    @Column(name = "NOME", nullable = false, unique = true, length = 20)
-    private String nome;
+    private Long idCliente;
+    @Column(name = "NOME_COMPLETO", nullable = false, unique = true, length = 50)
+    private String nomec;
+    @Column(name = "EMAIL", nullable = false, unique = true, length = 20)
+    private String email;
+    @OneToMany(mappedBy ="cliente")
+    private List<Carrinho> carrinhos = new ArrayList<>();
     
     public Cliente() {
     
     }
 
-    public Cliente(UUID idCliente, String nome) {
-        this.idCliente = idCliente;
-        this.nome = nome;
+    public Cliente(String nomec, String email) {
+        this.nomec = nomec;
+        this.email = email;
     }
 
-    public UUID getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(UUID idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
-
-    public String getNome() {
-        return nome;
+    
+    public String getNomec() {
+        return nomec;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomec(String nomec) {
+        this.nomec = nomec;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Carrinho> getCarrinhos() {
+        return carrinhos;
+    }
+
+    public void setCarrinhos(List<Carrinho> carrinhos) {
+        this.carrinhos = carrinhos;
+    }
+    
+    
+    
     
     
     

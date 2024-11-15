@@ -18,6 +18,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, UUID> {
 
-    Optional<Produto> findByNome(String nome);
+    Optional<Produto> findByNome(String name);
     
 }

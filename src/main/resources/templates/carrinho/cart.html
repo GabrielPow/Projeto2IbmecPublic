@@ -161,6 +161,14 @@
             </table>
             <p th:text="${carrinho.percentual}"></p>
             <form th:action="@{/ibmec-test/carrinho/exportarCarrinho}" method="post">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Ex: Maria  da Silva Andrade" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
                 <button type="submit" class="btn btn-success">Enviar Orçamento</button>
             </form>
 </div>

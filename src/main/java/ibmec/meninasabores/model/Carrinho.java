@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -44,6 +45,9 @@ public class Carrinho implements Serializable{
     inverseJoinColumns = @JoinColumn(name = "PRODUTO_ID")
     )
     private List<Produto> cProdutos = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "CLIENTE_ID", nullable = false)
+    private Cliente cliente;
 
     
     public Carrinho() {
@@ -99,6 +103,13 @@ public class Carrinho implements Serializable{
         this.cProdutos.remove(produto);
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
 
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     
 }

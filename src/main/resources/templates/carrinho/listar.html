@@ -53,7 +53,7 @@
                 <tbody>
                     <tr th:each="carrinho : ${carrinhos}">
                         <td th:text="${carrinho.idCarrinho}"></td>                        
-                        <td th:text="Teste"></td>
+                        <td th:text="${carrinho.cliente.nomec}"></td>
                         <td>
                             <ul>
                                 <li th:each="produto : ${carrinho.cProdutos}" th:text="${produto.nome}"></li>
