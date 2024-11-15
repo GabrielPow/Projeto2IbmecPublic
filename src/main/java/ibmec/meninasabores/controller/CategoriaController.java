@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author gabri
  */
 @Controller
-@RequestMapping("ibmec-test/categoria")
+@RequestMapping("/admin/categoria")
 public class CategoriaController {
     
     
@@ -53,7 +53,7 @@ public class CategoriaController {
     @PostMapping("/salvar")
     public String salvar(Categoria categoria) {
          categoriaService.save(categoria);
-         return "redirect:/ibmec-test/categoria/listar";
+         return "redirect:/admin/categoria/listar";
     }
      
     @GetMapping("/editar/{id}")
@@ -70,7 +70,7 @@ public class CategoriaController {
              return "/categoria/editar";
          }
          categoriaService.update(categoria);
-         return "redirect:/ibmec-test/categoria/listar";
+         return "redirect:/admin/categoria/listar";
     }
  
      
@@ -84,7 +84,7 @@ public class CategoriaController {
     @PostMapping("/excluir/{id}")
     public String confirmarExclusao(@PathVariable UUID id, ModelMap model) {
          categoriaService.deleteById(id);
-         return "redirect:/ibmec-test/categoria/listar";
+         return "redirect:/admin/categoria/listar";
     }
      
     @GetMapping("/nome/{nome}")

@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * @author gabri
  */
 @Controller
-@RequestMapping("/ibmec-test/carrinho")
+@RequestMapping("/home/carrinho")
 @SessionAttributes("carrinho")
 public class CarrinhoController {
 
@@ -52,7 +52,7 @@ public class CarrinhoController {
         return new Carrinho();
     }
 
-    @GetMapping("/carrinho")
+    @GetMapping("/ver")
     public String Carrinho(@ModelAttribute("carrinho") Carrinho carrinho, ModelMap model) {
         carrinho.getcProdutos().sort(Comparator.comparing(produto -> produto.getNome()));
         model.addAttribute("carrinho",carrinho);
@@ -94,7 +94,7 @@ public class CarrinhoController {
             carrinho.setCliente(cliente);
     }
         carrinhoService.save(carrinho);
-        return "redirect:/ibmec-test/carrinho/carrinho";
+        return "redirect:/home/carrinho/ver";
     }
     
     @PostMapping("/exportarCarrinho")
@@ -107,14 +107,14 @@ public class CarrinhoController {
         Cliente cliente = clienteService.findByNomec(name).orElseThrow(() ->
                 new RuntimeException("Cliente Não encontrado"));
         carrinho.setCliente(cliente);
-        carrinho.setStatus("Em Pagamento");
+        carrinho.setStatus("Pagamento");
         carrinhoService.save(carrinho);
         Carrinho novoCarrinho = new Carrinho();
         model.addAttribute("carrinho",novoCarrinho);
-        return "redirect:/ibmec-test/carrinho/carrinho";
+        return "redirect:/home/carrinho/ver";
     }
      
-    @GetMapping("/editar/{id}")
+    /*@GetMapping("/editar/{id}")
     public String editar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("carrinho", carrinhoService.findById(id));
          return "/carrinho/editar";
@@ -128,7 +128,7 @@ public class CarrinhoController {
              return "/carrinho/editar";
          }
          carrinhoService.update(carrinho);
-         return "redirect:/ibmec-test/carrinho/pedidos";
+         return "redirect:/admin/carrinho/pedidos";
      }
  
      
@@ -142,8 +142,8 @@ public class CarrinhoController {
      @PostMapping("/excluir/{id}")
      public String confirmarExclusao(@PathVariable UUID id, ModelMap model) {
          carrinhoService.deleteById(id);
-         return "redirect:/ibmec-test/carrinho/pedidos";
-     }
+         return "redirect:/admin/carrinho/pedidos";
+     }*/
      
     @GetMapping("/removerProduto/{id}")
      public String removerProduto(@PathVariable UUID id, @ModelAttribute("carrinho") Carrinho carrinho, ModelMap model) {
@@ -168,7 +168,7 @@ public class CarrinhoController {
         carrinho.removeProduto(product);
         carrinho.subPercentual(temp);
         carrinhoService.update(carrinho);
-        return "redirect:/ibmec-test/carrinho/carrinho";
+        return "redirect:/home/carrinho/ver";
     }
 
     

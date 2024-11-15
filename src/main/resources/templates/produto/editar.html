@@ -25,9 +25,9 @@
     </head>
     <body>
         <div class="container mt-4">
-            <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info btn-right">Principal</a>
+            <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info btn-right">Principal</a>
             <h1>Editar Padrão</h1>
-            <form action="#" th:action="@{/ibmec-test/produto/atualizar}" th:object="${produto}" method="post">
+            <form action="#" th:action="@{/admin/produto/atualizar}" th:object="${produto}" method="post">
                 <div class="form-group">
                     <label for="idProduto">Código</label>
                     <input type="text" class="form-control" id="idProduto" th:field="*{idProduto}" placeholder="Código" maxlength="20" readonly required>
@@ -71,7 +71,7 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-secondary">Cancelar</a>
+                <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
     </body>

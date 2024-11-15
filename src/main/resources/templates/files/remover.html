@@ -25,12 +25,12 @@
 </head>
 <body>
     <div class="container mt-4">
-        <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info btn-right">Principal</a>
+        <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info btn-right">Principal</a>
         <h1>Confirmar Exclusão</h1>
         <p>Tem certeza de que deseja excluir a imagem <span th:text="${imagem.name}">Nome do Padrão</span>?</p>
-        <form action="#" th:action="@{/files/excluir/{id}(id=${imagem.id})}" method="post">
+        <form action="#" th:action="@{/admin/files/excluir/{id}(id=${imagem.id})}" method="post">
             <button type="submit" class="btn btn-danger">Excluir</button>
-            <a href="#" th:href="@{/files/listar}" class="btn btn-secondary">Cancelar</a>
+            <a href="#" th:href="@{/admin/files/listar}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

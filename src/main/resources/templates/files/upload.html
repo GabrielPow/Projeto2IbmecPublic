@@ -9,10 +9,11 @@
     </head>
     <body class="container mt-5">
         <div class="d-flex justify-content-between mb-3">
-            <a href="#" th:href="@{/files/listar}" class="btn btn-info">Lista de Imagens</a>
+            <a href="#" th:href="@{/admin/files/listar}" class="btn btn-info">Lista de Imagens</a>
         </div>
         <h2 class="mb-4">Upload de Arquivo</h2>
-        <form action="/files/upload" method="post" enctype="multipart/form-data" class="mb-4">
+        <form th:action="@{/admin/files/upload}" method="post" enctype="multipart/form-data" class="mb-4">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
                 <input type="file" name="file" class="form-control-file" required>
             </div>

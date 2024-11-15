@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author gabri
  */
 @Controller
-@RequestMapping("ibmec-test/produto")
+@RequestMapping("/admin/produto")
 public class ProdutoController {
     
     
@@ -98,7 +98,7 @@ public class ProdutoController {
      @PostMapping("/salvar")
      public String salvar(Produto produto) {
          produtoService.save(produto);
-         return "redirect:/ibmec-test/produto/listar";
+         return "redirect:/admin/produto/listar";
      }
      
      @GetMapping("/editar/{id}")
@@ -119,7 +119,7 @@ public class ProdutoController {
              return "/produto/editar";
          }
          produtoService.update(produto);
-         return "redirect:/ibmec-test/produto/listar";
+         return "redirect:/admin/produto/listar";
      }
  
      
@@ -133,7 +133,7 @@ public class ProdutoController {
      @PostMapping("/excluir/{id}")
      public String confirmarExclusao(@PathVariable UUID id, ModelMap model) {
          produtoService.deleteById(id);
-         return "redirect:/ibmec-test/produto/listar";
+         return "redirect:/admin/produto/listar";
      }
      
      @GetMapping("/nome/{nome}")

@@ -158,23 +158,23 @@
     <!-- Navbar personalizada para o site Meninas Sabores -->
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Meninas Sabores</a>
+        <a class="navbar-brand" href="#" th:href="@{/home}">Meninas Sabores</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#" th:href="@{/ibmec-test/index}">Início</a>
+              <a class="nav-link" href="#" th:href="@{/home}">Início</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#" th:href="@{/ibmec-test/index/quemsomos}">Quem somos</a>
+              <a class="nav-link active" href="#" th:href="@{/home/quemsomos}">Quem somos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" th:href="@{/ibmec-test/produto/listaProduto}">Produtos</a>
+              <a class="nav-link" href="#" th:href="@{/home/produtos}">Produtos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" th:href="@{/ibmec-test/index/contato}">Contato</a>
+              <a class="nav-link" href="#" th:href="@{/home/contato}">Contato</a>
             </li>
           </ul>
 
@@ -195,7 +195,7 @@
     <header>
       <h1>Produtos</h1>
     </header>
-<a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info">Admin</a>
+<a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info">Admin</a>
 <section class="product-section">
       <h2>Destaque</h2>
       <table class="table table-bordered">
@@ -209,11 +209,11 @@
         </thead>
         <tbody>
             <tr th:each="produto : ${produtosDestaque}">
-            <td><img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
+            <td><img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
             <td th:text="${produto.nome}"></td>
             <td th:text="${produto.percentual}"></td>
             <td>
-                <a th:href="@{/ibmec-test/produto/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-success btn-sm">Ver Mais</a>
+                <a th:href="@{/home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-success btn-sm">Ver Mais</a>
             </td>
             </tr>
         </tbody>

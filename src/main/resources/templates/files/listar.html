@@ -36,9 +36,9 @@
         <div class="container">
             <h1>Lista de Imagens</h1>
             <div class="d-flex justify-content-between mb-3">
-                <a href="/files/upload-page" class="btn btn-primary">Inserir</a>
-                <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info">Lista de Produtos</a>
-                <a href="#" th:href="@{/ibmec-test/index}" class="btn btn-info">Principal</a>
+                <a href="/admin/files/upload-page" class="btn btn-primary">Inserir</a>
+                <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info">Lista de Produtos</a>
+                <a href="#" th:href="@{/home}" class="btn btn-info">Principal</a>
             </div>
             <table class="table table-bordered">
                 <thead class="thead-light">
@@ -51,11 +51,11 @@
                 </thead>
                 <tbody>
                     <tr th:each="imagem : ${imagens}">
-                        <td><img th:src="@{/files/ver/{id}(id=${imagem.id})}" class="img-fluid"></td>
+                        <td><img th:src="@{/home/files/ver/{id}(id=${imagem.id})}" class="img-fluid"></td>
                         <td th:text="${imagem.id}"></td>
                         <td th:text="${imagem.name}"></td>
                         <td>
-                            <a th:href="@{/files/remover/{id}(id=${imagem.id})}" class="btn btn-danger btn-sm">Remover</a>
+                            <a th:href="@{/admin/files/remover/{id}(id=${imagem.id})}" class="btn btn-danger btn-sm">Remover</a>
                         </td>
                     </tr>
                 </tbody>

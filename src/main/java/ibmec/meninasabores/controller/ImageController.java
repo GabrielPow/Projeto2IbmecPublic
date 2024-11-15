@@ -31,7 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author gabri
  */
 @Controller
-@RequestMapping("/files")
+@RequestMapping("/admin/files")
 public class ImageController {
     
     @Autowired
@@ -52,7 +52,7 @@ public class ImageController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Falha no upload do arquivo.");
         }
-        return "redirect:/files/upload-page";
+        return "redirect:/admin/files/upload-page";
     }
     
     @GetMapping("/listar")
@@ -109,7 +109,7 @@ public class ImageController {
     @PostMapping("/excluir/{id}")
     public String confirmarExclusao(@PathVariable Long id, ModelMap model) {
         ImageService.deleteById(id);
-        return "redirect:/files/listar";
+        return "redirect:/admin/files/listar";
      }
  
 }

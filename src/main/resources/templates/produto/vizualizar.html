@@ -172,23 +172,23 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Meninas Sabores</a>
+        <a class="navbar-brand" href="#" th:href="@{/home}">Meninas Sabores</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Início</a>
+              <a class="nav-link" href="#" th:href="@{/home}">Início</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Quem somos</a>
+              <a class="nav-link" href="#" th:href="@{/home/quemsomos}">Quem somos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Produtos</a>
+              <a class="nav-link active" href="#" th:href="@{/home/produtos}">Produtos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contato</a>
+              <a class="nav-link" href="#" th:href="@{/home/contato}">Contato</a>
             </li>
           </ul>
         </div>
@@ -196,7 +196,7 @@
     </nav>
 
     <!-- Cabeçalho -->
-    <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-info btn-right">Principal</a>
+    <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info btn-right">Admin</a>
     <header>
       <h1>Página de Produto</h1>
     </header>
@@ -205,19 +205,19 @@
     <section class="product-section">
       <div class="product-info">
         <div class="product-image">
-          <img th:src="@{/files/ver/{id}(id=${produto.imagem.id})}" alt="Imagem do Produto">
+          <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" alt="Imagem do Produto">
         </div>
         <div class="product-details">
           <h2 th:text="${produto.nome}">Nome de Produto</h2>
           <p class="product-price">R$ <span th:text="${produto.percentual}">0,00</span></p>
-          <form th:action="@{/ibmec-test/carrinho/salvarProduto/{id}(id=${produto.idProduto})}" method="post">
+          <form th:action="@{/home/carrinho/salvarProduto/{id}(id=${produto.idProduto})}" method="post">
              <button class="buy-button">Adicionar ao Carrinho</button>
           </form>
         </div>
       </div>
       <div class="product-description">
         <p th:text="${produto.descricao}">
-          Esta geleia de morango é produzida artesanalmente com ingredientes selecionados.
+          Descrição vem aqui.
         </p>
       </div>
     </section>

@@ -141,23 +141,23 @@
 <!-- Navbar Integrada ao Flask -->
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('index') }}">Menina Sabores</a>
+        <a class="navbar-brand" href="{{ url_for('index') }} " th:href="@{/home}">Menina Sabores</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="#" th:href="@{/ibmec-test/index}">Início</a>
+                    <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="#" th:href="@{/home}">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.endpoint == 'quem_somos' %}active{% endif %}" href="#" th:href="@{/ibmec-test/index/quemsomos}">Quem Somos</a>
+                    <a class="nav-link {% if request.endpoint == 'quem_somos' %}active{% endif %}" href="#" th:href="@{/home/quemsomos}">Quem Somos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.endpoint == 'produtos' %}active{% endif %}" href="#" th:href="@{/ibmec-test/produto/listaProduto}">Produtos</a>
+                    <a class="nav-link {% if request.endpoint == 'produtos' %}active{% endif %}" href="#" th:href="@{/home/produtos}">Produtos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.endpoint == 'contato' %}active{% endif %}" href="#" th:href="@{/ibmec-test/index/contato}">Contato</a>
+                    <a class="nav-link {% if request.endpoint == 'contato' %}active{% endif %}" href="#" th:href="@{/home/contato}">Contato</a>
                 </li>
             </ul>
         </div>
