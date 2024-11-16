@@ -19,7 +19,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 .collect(Collectors.toSet());
 
         if (roles.contains("ROLE_ADMIN")) {
-            response.sendRedirect("/admin/produto/listar");  // Redireciona para home do admin
+            response.sendRedirect("/admin/produto/painel");  // Redireciona para home do admin
         } else {
             response.sendRedirect("/");  // Redireciona para a página inicial padrão
         }

@@ -1,0 +1,117 @@
+<footer class="footer-custom" th:fragment="rodape">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <!-- Sobre a Empresa -->
+      <div class="col-md-4 mb-4">
+        <h5 class="footer-title">Sobre Menina Sabores</h5>
+        <p class="footer-text">
+          Menina Sabores é uma marca que valoriza as raízes e tradições quilombolas, trazendo licores e doces artesanais feitos com amor e orgulho de nossa herança.
+        </p>
+      </div>
+
+      <!-- Links Rápidos -->
+      <div class="col-md-4 mb-4">
+        <ul class="list-unstyled">
+          <li><a href="{{ url_for('index') }}" class="footer-link">Início</a></li>
+          <li><a href="{{ url_for('quem_somos') }}" class="footer-link">Quem Somos</a></li>
+          <li><a href="{{ url_for('lista_produtos') }}" class="footer-link">Produtos</a></li>
+          <li><a href="{{ url_for('contato') }}" class="footer-link">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato e Redes Sociais -->
+      <div class="col-md-4 mb-4">
+        <h5 class="footer-title">Contato</h5>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-phone-alt"></i> +55 (11) 1234-5678</li>
+          <li><i class="fas fa-envelope"></i> contato@meninasabores.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Rua das Tradições, 45 - São Paulo, SP</li>
+        </ul>
+        <div class="social-icons mt-3">
+          <a href="https://www.facebook.com/meninasabores" target="_blank" class="footer-icon"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="https://instagram.com/meninasabores" target="_blank" class="footer-icon"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="https://www.linkedin.com/company/meninasabores" target="_blank" class="footer-icon"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col text-center">
+        <p class="footer-copy">&copy; 2024 Menina Sabores. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* Estilo do Rodapé */
+.footer-custom {
+  background-color: #992800;
+  color: #fff;
+  padding: 40px 0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+  color: #FAC140;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #FFFFFF;
+}
+
+.footer-link {
+  color: #FAC140;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #FFFFFF;
+}
+
+.footer-copy {
+  font-size: 0.9em;
+  color: #FAC140;
+  margin-top: 20px;
+}
+
+.footer-custom .fa-phone-alt,
+.footer-custom .fa-envelope,
+.footer-custom .fa-map-marker-alt {
+  color: #FAC140;
+  margin-right: 8px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icons .footer-icon {
+  color: #FAC140;
+  transition: color 0.3s ease;
+}
+
+.social-icons .footer-icon:hover {
+  color: #FFFFFF;
+}
+
+/* Responsividade para rodapé */
+@media (max-width: 768px) {
+  .footer-custom .row {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+</style>

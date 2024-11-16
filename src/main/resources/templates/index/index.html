@@ -5,168 +5,474 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Menina Sabores</title>
 
-  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <!-- Bootstrap CSS: framework para estilização responsiva -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome: ícones para navegação e redes sociais -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:wght@100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
 
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      color: #333;
-    }
+/* Estilização Global */
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: #742910;
+  background-color: #fff6e5!important;
+}
 
-    /* Navbar personalizada */
-    .navbar-custom {
-      background-color: #992800;
-      min-height: 70px;
-    }
+/* Centraliza o conteúdo dentro do container da navbar */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .navbar-custom .navbar-brand {
-      color: #fff;
-      font-size: 1.75em;
-      font-weight: bold;
-    }
+/* Estilização das Categorias */
+.categoria-link {
+  text-decoration: none;
+  color: #742910;
+}
 
-    .navbar-custom .nav-link {
-      color: #fff !important;
-      font-size: 1.1em;
-      padding: 10px 15px;
-      transition: color 0.3s ease;
-    }
+.categoria-link:hover h3, .categoria-link:hover p {
+  color: #BF3E21;
+}
 
-    .navbar-custom .nav-link:hover {
-      color: #FAC140 !important;
-    }
+.categorias img {
+  max-width: 80%; /* Define a largura máxima para imagens de categoria */
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
 
-    .navbar-custom .cart-icon {
-      color: #FAC140;
-      font-size: 1.5em;
-      transition: color 0.3s ease;
-    }
+.categoria-link:hover img {
+  transform: scale(1.05);
+}
 
-    .navbar-custom .cart-icon:hover {
-      color: #fff;
-    }
+/* Estilização das Categorias */
+.categoria-link h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4em;
+  margin-top: 10px;
+  font-weight: 600;
+}
 
-    .footer {
-      background-color: #992800;
-      color: #fff;
-      padding: 40px 0;
-      font-size: 1em;
-    }
+.categoria-link p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95em;
+  margin-top: 5px;
+  color: #666;
+}
 
-    .footer a {
-      color: #C8E6C9;
-      margin: 0 10px;
-    }
+/* Centralização do texto e imagem nas colunas de categorias */
+.categorias .col-lg-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-    /* Seção Categorias */
-    .categorias .col-md-4 {
-      margin-bottom: 40px;
-      text-align: center;
-      padding: 20px;
-      border-radius: 15px;
-      background-color: #f2f2f2;
-      transition: transform 0.3s ease;
-    }
+/* Ajuste do Carrossel para maior visibilidade das imagens */
+.carousel-inner {
+  height: auto; /* Define altura automática para que se ajuste ao conteúdo */
+}
 
-    .categorias .col-md-4:hover {
-      transform: scale(1.05);
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    }
+.carousel-item img {
+  width: 100%; /* Ocupar toda a largura do container */
+  height: 620px; /* Altura fixa */
+  max-height: 620px;
+  object-fit: cover; /* Cobre o espaço do container sem distorcer a imagem */
+}
 
-    .categorias img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 50%;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    }
 
-    .carousel-inner {
-      height: 500px;
-    }
+/* Para dispositivos com largura de tela menor que 768px */
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 400px; /* Altura reduzida */
+  }
+}
 
-    .carousel-item img {
-      height: 500px;
-      object-fit: cover;
-    }
+/* Títulos */
+h2 {
+  font-family: 'Poppins', sans-serif;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #BF3E21;
+  font-weight: 700;
+}
 
-    h2 {
-      margin-top: 40px;
-      margin-bottom: 20px;
-      font-size: 2em;
-      color: #BF3E21;
-    }
+/* Container de vídeo responsivo */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-    }
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+/* Seção Instagram */
+.elfsight-app-0049003b-f612-4468-bb21-3f75b2e9728f {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.instagram-container h2 {
+  color: #BF3E21;
+  margin-bottom: 20px;
+}
+
+/* Estilização do Rodapé */
+.footer {
+  background-color: #992800; /* Cor igual à do navbar */
+  color: #F1E3D3;
+  padding-top: 20px;
+  font-size: 1em;
+  border-top: 4px solid #BF3E21; /* Borda complementar */
+}
+
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  color: #FAC140;
+  font-weight: 700;
+}
+
+.footer p, .footer a {
+  font-family: 'Quicksand', sans-serif;
+  color: #F1E3D3;
+  font-weight: 300;
+}
+
+/* Seção inferior do rodapé - unificando o fundo */
+.footer-bottom {
+  padding: 10px 0;
+  color: #C8E6C9;
+  font-size: 0.85em;
+}
+
+/* Responsividade do rodapé */
+@media (max-width: 768px) {
+  .footer .row {
+    text-align: center;
+  }
+  .footer-icon {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}
+.offcanvas-header {
+  background-color: #992800;
+  color: #fff;
+}
+
+.offcanvas-body {
+  background-color: #F1E3D3;
+}
+
+.offcanvas .nav-link {
+  color: #742910;
+  font-size: 1.1em;
+}
+
+.offcanvas .nav-link:hover {
+  color: #BF3E21;
+}
+/* Seção de produtos */
+.product-section {
+  position: relative;
+  overflow: hidden;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.product-section h2 {
+  font-family: 'Josefin Sans', sans-serif;
+    color: #731B14;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.8rem;
+}
+
+
+/* Grid para os produtos com rolagem horizontal */
+
+/* Grid de produtos */
+
+.product-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 0 20px;
+  scroll-snap-type: x mandatory;
+  align-items: stretch;
+  max-width: 100%;
+  justify-content: center; /* Centraliza o conteúdo */
+  box-sizing: border-box;
+}
+
+
+/* Estilos base para padronizar o tamanho dos cartões */
+.product-card {
+  background-color: #fff;
+  border: 1px solid #FAC140;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* Faz o card ocupar 100% da altura disponível */
+  min-height: 400px; /* Define uma altura mínima para manter os cards uniformes */
+}
+
+
+/* Ajuste a imagem dentro do cartão */
+.product-card img {
+  width: 100%;
+  height: 200px; /* Altura fixa para manter as imagens alinhadas */
+  max-width: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+
+
+
+.product-card h3, .product-card p {
+    white-space: normal; /* Permite que o texto quebre em várias linhas */
+}
+
+
+
+.product-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  color: #992800;
+  margin: 10px 0;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.5em; /* Define altura fixa para o título, mesmo se for em duas linhas */
+}
+
+
+/* Estilos gerais para parágrafos dentro de .product-card */
+.product-card p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: #742910;
+  margin: 0;
+}
+
+/* Específicos para subtítulo */
+.product-card p.frase-subtitulo {
+  font-family: 'Josefin Sans', sans-serif; /* Altera a fonte */
+  font-size: 0.95rem;
+}
+
+/* Específicos para descrição */
+.product-card p.descricao {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0 10px;
+  height: 2.5em; /* Altura fixa para descrição */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-card p strong {
+  color: #992800; /* Cor do título */
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.product-card p.descricao {
+  color: #742910; /* Cor do título */
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+
+  /* Botão */
+  .product-card .btn-primary {
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #742910;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: auto; /* Faz o botão alinhar ao final do card */
+}
+
+.product-card .btn-primary:hover {
+  background-color: #FAC140;
+  color: #742910;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .swiper-slide {
+        max-width: 100%; /* Para dispositivos móveis, exiba um slide por vez */
     }
+    .product-card {
+        width: 100%; /* Garante que o cartão ocupa toda a largura disponível */
+    }
+}
+
+
+
+
+
+/* Setas de navegação */
+.arrow-left, .arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #992800;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+/* Título da seção "Conheça nossa proposta" */
+.text-container p {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Título da seção Instagram */
+.instagram-container h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #BF3E21;
+  font-weight: 700;
+}
+
+/* Rodapé */
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  color: #FAC140;
+  font-weight: 700;
+}
+
+/* Fontes para parágrafos e links no rodapé */
+.footer p, .footer a {
+  font-family: 'Quicksand', sans-serif;
+  color: #F1E3D3;
+  font-weight: 300;
+}
+
+/* Título "Conheça nossa proposta" */
+.container.my-5 h2.text-center {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2em;
+  color: #BF3E21;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Texto do parágrafo dentro de "Conheça nossa proposta" */
+.container.my-5 .text-container p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: #742910;
+}
+
+
+/* Título da Seção "Contato" */
+.container.my-5 h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2em;
+  color: #BF3E21;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Parágrafos da Seção "Contato" */
+.container.my-5 .col-md-6 p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: #742910;
+}
+
+/* Estilo específico para informações destacadas em negrito */
+.container.my-5 .col-md-6 p strong {
+  font-weight: 600;
+  color: #742910;
+}
+
+:root {
+  --primary-color: #C14721;
+  --secondary-color: #FAC140;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #742910;
+  z-index: 20; /* Certifique-se de que a seta está acima dos slides */
+}
+
+
+.swiper-pagination-bullet {
+  background-color: #742910;
+}
+
   </style>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#" th:href="@{/home}">Menina Sabores</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#" th:href="@{/home}">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/home/quemsomos}" >Quem somos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/home/produtos}">Produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/home/contato}">Contato</a>
-          </li>
-        </ul>
-      </div>
-      <a href="{{ url_for('cart') }}" th:href="@{/home/carrinho/ver}" class="nav-link cart-icon">
-        <i class="fas fa-shopping-cart"></i>
-      </a>
-    </div>
-  </nav>
+  <div th:replace="/index/navbar :: navbar"> </div>
 
-  <!-- Carousel -->
+  <!-- Carrossel de Imagens -->
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores de Slides -->
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+
+    <!-- Imagens do Carrossel -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-         <img src="/images/index/imagemcozinha.png"  class="d-block w-100" alt="Primeiro Slide">
+        <img src="{{ url_for('static', filename='images/Banner2.png') }}" class="d-block w-100" alt="Primeiro Slide">
       </div>
       <div class="carousel-item">
-         <img src="/images/index/imagemfazenda.png" class="d-block w-100" alt="Segundo Slide">
+        <img src="{{ url_for('static', filename='images/Banner3.png') }}" class="d-block w-100" alt="Segundo Slide">
       </div>
       <div class="carousel-item">
-         <img src="/images/index/imagemlogo.png"  class="d-block w-100" alt="Terceiro Slide">
+        <img src="{{ url_for('static', filename='images/imagemlogo.png') }}" class="d-block w-100" alt="Terceiro Slide">
       </div>
     </div>
+
+    <!-- Controles de Navegação do Carrossel -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Anterior</span>
@@ -177,99 +483,213 @@
     </button>
   </div>
 
-  <!-- Seção Categorias -->
-  <section class="categorias container my-5">
-    <div class="row text-center">
-      <div class="col-lg-4 col-md-6 mb-4">
-        <img src="/images/index/doces.png" class="img-fluid rounded-circle" alt="Categoria 1">
-        <a href="#" th:href="@{/ibmec-test/index/quemsomos}" >
-          <h3><i class="fas fa-info-circle"></i> Quem Somos</h3>
-        </a>
+ <!-- Seção Categorias -->
+<section class="categorias container my-5">
+  <div class="row text-center">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <a href="{{ url_for('quem_somos') }}" class="categoria-link">
+        <img src="{{ url_for('static', filename='images/doces.png') }}" class="img-fluid rounded-circle" alt="Categoria 1">
+        <h3>Quem Somos</h3>
         <p>A história e o respeito à tradição como identidade!</p>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <img src="/images/index/licores.png" class="img-fluid rounded-circle" alt="Categoria 2">
-        <a href="#" th:href="@{/ibmec-test/produto/listaProduto}" >
-          <h3><i class="fas fa-wine-bottle"></i> Produtos</h3>
-        </a>
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <a href="{{ url_for('lista_produtos') }}" class="categoria-link">
+        <img src="{{ url_for('static', filename='images/licores.png') }}" class="img-fluid rounded-circle" alt="Categoria 2">
+        <h3>Produtos</h3>
         <p>Participe dessa experiência marcante!</p>
-      </div>
-      <div class="col-lg-4 col-md-12 mb-4">
-        <img src="/images/index/geleia.png" class="img-fluid rounded-circle" alt="Categoria 3">
-        <a href="#" th:href="@{/ibmec-test/index/contato}" >
-          <h3><i class="fas fa-phone-alt"></i> Contato</h3>
-        </a>
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-12 mb-4">
+      <a href="{{ url_for('contato') }}" class="categoria-link">
+        <img src="{{ url_for('static', filename='images/geleia.png') }}" class="img-fluid rounded-circle" alt="Categoria 3">
+        <h3>Contato</h3>
         <p>Conheça nossos produtos!</p>
-      </div>
-    </div>
-  </section>
-  
-  <a th:href="@{/home/login}">Login</a>
-  <!-- Seção Conheça nossa proposta -->
-  <div class="container my-5">
-    <h2 class="text-center">Conheça nossa proposta</h2>
-    <div class="row mt-4">
-      <div class="col-md-6">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/zS1Q3TArjgA" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="col-md-6 text-container">
-        <p>Conheça um pouco do nosso trabalho, participamos do programa Pequenas Empresas e Grandes Negócios.</p>
-      </div>
+      </a>
     </div>
   </div>
+</section>
 
-  <!-- Seção de Contato -->
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Contato</h2>
-        <p>A nossa história fica ainda mais viva com sua visita! Venha nos conhecer e saborear nossas receitas tradicionais, preparadas com carinho e ancestralidade.</p>
-        <p><strong>Localização:</strong> R. Américo Brasiliense, 2025 - Chácara Santo Antônio, São Paulo - SP, 04715-005</p>
-        <p><strong>Telefone:</strong> (11) 99655-7068<br><strong>Horário de Funcionamento:</strong> Fechado · Abre qua. às 10:00</p>
+<!-- Seção de Geleias -->
+<section class="product-section">
+  <h2>Geleias</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {% for produto_id, produto in produtos.items() %}
+        {% if 'geleia' in produto_id %}
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="{{ url_for('static', filename='images/' + produto['imagem']) }}" alt="{{ produto['nome'] }}">
+              <h3>{{ produto['nome'] }}</h3>
+              <p class="descricao">{{ produto['descricao'] }}</p>
+              <p><strong>{{ produto['preco'] }}</strong></p>
+              <a href="{{ url_for('produto_detalhes', produto_id=produto_id) }}" class="btn btn-primary">Mais Detalhes</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Navegação do Swiper -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- Seção de Licores -->
+<section class="product-section">
+  <h2>Licores</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {% for produto_id, produto in produtos.items() %}
+        {% if 'licor' in produto_id %}
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="{{ url_for('static', filename='images/' + produto['imagem']) }}" alt="{{ produto['nome'] }}">
+              <h3>{{ produto['nome'] }}</h3>
+              <p class="descricao">{{ produto['descricao'] }}</p>
+              <p><strong>{{ produto['preco'] }}</strong></p>
+              <a href="{{ url_for('produto_detalhes', produto_id=produto_id) }}" class="btn btn-primary">Mais Detalhes</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Navegação do Swiper -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Seção Conheça nossa proposta -->
+<!-- Seção Conheça nossa proposta -->
+<div class="container my-5">
+  <h2 class="text-center" style="font-family: 'Poppins', sans-serif; font-size: 2.5em; color: #BF3E21; font-weight: 700; margin-bottom: 30px;">
+    Conheça Nossa Proposta
+  </h2>
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <div class="video-container" style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+        <iframe src="https://www.youtube.com/embed/zS1Q3TArjgA" frameborder="0" allowfullscreen style="width: 100%; height: 100%;"></iframe>
       </div>
-      <div class="col-md-6">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.2757742617265!2d-46.698963684536076!3d-23.594005784667036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce570fb4794497%3A0x4721d2b9e8465c9f!2sR.%20Am%C3%A9rico%20Brasiliense%2C%202025%20-%20Ch%C3%A1cara%20Santo%20Ant%C3%B4nio%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004715-005%2C%20Brasil!5e0!3m2!1spt-BR!2sus!4v1683152044786!5m2!1spt-BR!2sus" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-      </div>
+    </div>
+    <div class="col-md-6 text-container" style="padding: 20px;">
+      <p style="font-family: 'Josefin Sans', sans-serif; font-size: 1.2em; color: #742910; line-height: 1.8; text-align: justify; text-justify: inter-word;">
+        Tivemos a honra de apresentar nossa história e nossos produtos em uma entrevista exclusiva no programa <strong>Pequenas Empresas & Grandes Negócios</strong>. Esse momento especial foi uma oportunidade única para mostrar ao Brasil a essência do <em>Menina Sabores</em>: a paixão pelas nossas raízes, o respeito às receitas de nossos antepassados e o desejo de levar ao seu paladar sabores autênticos e feitos com amor. Cada receita é uma homenagem à nossa ancestralidade e um convite para você descobrir nossa cultura através do sabor.
+      </p>
     </div>
   </div>
+</div>
 
-  <!-- Seção Instagram Feed Elfsight -->
-  <div class="container my-5">
-    <h2 class="text-center">Conheça o nosso Instagram</h2>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <script src="https://static.elfsight.com/platform/platform.js" async></script>
-        <div class="elfsight-app-0049003b-f612-4468-bb21-3f75b2e9728f"></div>
-      </div>
+
+
+
+
+<!-- Seção Instagram Feed Elfsight -->
+<div class="container instagram-container my-5 text-center">
+  <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2em; color: #BF3E21; font-weight: 700; margin-bottom: 20px;">
+    Conheça o nosso Instagram
+  </h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <script src="https://static.elfsight.com/platform/platform.js" async></script>
+      <div class="elfsight-app-0049003b-f612-4468-bb21-3f75b2e9728f" style="width: 100%;"></div>
     </div>
   </div>
+</div>
 
-  <!-- Rodapé -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h5>Siga-nos</h5>
-          <a href="https://www.facebook.com/meninasabores/"><i class="fab fa-facebook fa-2x"></i></a>
-          <a href="https://instagram.com/meninasabores/"><i class="fab fa-instagram fa-2x"></i></a>
-          <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-        </div>
-        <div class="col-md-4 text-center">
-          <h5>Contato</h5>
-          <p><i class="fas fa-phone"></i> (11) 99655-7068</p>
-          <p><i class="fas fa-envelope"></i> contato@meninasabores.com.br</p>
-        </div>
-        <div class="col-md-4 text-center">
-          <h5>Endereço</h5>
-          <p><i class="fas fa-map-marker-alt"></i> R. Américo Brasiliense, 2025 - Chácara Santo Antônio, São Paulo - SP, 04715-005</p>
-        </div>
-      </div>
+
+<!--Newsletter-->
+{% include 'newsletter.html' %}
+<!-- Seção de Contato -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Contato</h2>
+      <p>A nossa história fica ainda mais viva com sua visita! Venha nos conhecer e saborear nossas receitas tradicionais, preparadas com carinho e ancestralidade.</p>
+      <p><strong>Localização:</strong> Rua Jônio, 60 - Jardim do Mar, São Bernardo do Campo - SBC</p>
+      <p><strong>Telefone:</strong> (11) 99655-7068<br><strong>Horário de Funcionamento:</strong> Fechado · Abre qua. às 10:00</p>
     </div>
-  </footer>
+    <div class="col-md-6">
+      <!-- Mapa do Google Maps -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.2757742617265!2d-46.698963684536076!3d-23.594005784667036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce570fb4794497%3A0x4721d2b9e8465c9f!2sRua%20J%C3%B4nio%2C%2060%20-%20Jardim%20do%20Mar%2C%20S%C3%A3o%20Bernardo%20do%20Campo%20-%20SP!5e0!3m2!1spt-BR!2sus!4v1683152044786!5m2!1spt-BR!2sus" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+  </div>
+</div>
 
+<!-- Rodapé -->
+<div th:replace="/index/rodape :: rodape"> </div>
+  <!-- Scripts JavaScript do Bootstrap -->  
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.mySwiper').forEach(function(swiperElement) {
+        const swiperInstance = new Swiper(swiperElement, {
+            loop: false,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: swiperElement.querySelector('.swiper-button-next'),
+                prevEl: swiperElement.querySelector('.swiper-button-prev'),
+            },
+            pagination: {
+                el: swiperElement.querySelector('.swiper-pagination'),
+                clickable: true,
+            },
+            slidesPerView: 4,
+            spaceBetween: 20,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                },
+                576: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                },
+            },
+            on: {
+                slideChangeTransitionEnd: function() {
+                    // Reinicia o autoplay quando o slide muda para assegurar continuidade
+                    swiperInstance.autoplay.start();
+                },
+            },
+        });
+
+        swiperInstance.update();
+    });
+});
+
+
+</script>
+
+  
+  
+  
+  
+
+  
+  
+  
 </body>
 </html>

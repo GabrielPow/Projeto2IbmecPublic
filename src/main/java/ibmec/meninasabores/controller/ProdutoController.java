@@ -44,6 +44,11 @@ public class ProdutoController {
     @Autowired
     private ImagemService imageService;
     
+    @GetMapping("/painel")
+    public String painel() {
+        return "/produto/paineladm";
+    }
+    
     @GetMapping("/listar")
      public String listar(ModelMap model) {
          List<Produto> produtos = produtoService.findAll();
@@ -51,7 +56,7 @@ public class ProdutoController {
                  .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                  .collect(Collectors.toList());
          model.addAttribute("produtos", sortedProdutos);
-         return "/produto/listar";
+         return "/produto/lista_produtos";
      }
      
      
@@ -61,7 +66,7 @@ public class ProdutoController {
          List<ImagemEntity> imagens = imageService.findAll();
          model.addAttribute("imagens",imagens);
          model.addAttribute("categorias",categorias);
-         return "/produto/inserir";
+         return "/produto/adicionar_produto";
      }
      
     @GetMapping("/listaProduto")
@@ -88,12 +93,12 @@ public class ProdutoController {
          return "/produto/listaProduto";
      }
      
-     @GetMapping("/vizualizar/{id}")
+     /*@GetMapping("/vizualizar/{id}")
      public String vizualizar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("produto",produtoService.findById(id).orElseThrow(() ->
                  new RuntimeException("Produto não encontrado")));
-         return "/produto/vizualizar";
-     }
+         return "/produto/productpage";
+     }*/
      
      @PostMapping("/salvar")
      public String salvar(Produto produto) {
@@ -108,7 +113,7 @@ public class ProdutoController {
          model.addAttribute("categorias", categorias);
          List<ImagemEntity> imagens = imageService.findAll();
          model.addAttribute("imagens",imagens);
-         return "/produto/editar";
+         return "/produto/editar_produto";
      }
      
      @PostMapping("/atualizar")

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ produto['nome'] }} - Meninas Sabores</title>
+
+    <!-- Descrição para SEO -->
+    <meta name="description" content="{{ produto['nome'] }} da Meninas Sabores, feita com ingredientes frescos e selecionados. Aproveite a qualidade dos nossos produtos artesanais.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Estilos customizados -->
+    <style>
+
+      /* Estilos personalizados */
+      body {
+        font-family: 'Quicksand', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff6e5;
+        color: #742910;
+      }
+
+      /* Cabeçalho */
+      header {
+        background-color: #f1f1f1;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #992800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Seção do produto */
+      .product-section {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .product-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .product-image {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .product-details {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .product-details h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .product-details p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .product-price {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #731B14;
+      }
+
+      .buy-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #992800;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .buy-button:hover {
+        background-color: #FAC140;
+      }
+
+      /* Descrição do produto */
+      .product-description {
+        margin-top: 40px;
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Seção do banner */
+      .banner {
+        background-color: #f2c230;
+        color: #731B14;
+        text-align: center;
+        padding: 50px 0;
+        margin: 40px 0;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      /* Rodapé */
+      footer {
+        background-color: #992800;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      footer .categories {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        font-size: 1rem;
+      }
+
+      footer .categories div {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        color: #FAC140;
+      }
+
+      footer .social-icons {
+        margin-bottom: 20px;
+      }
+
+      footer .social-icons a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.5rem;
+      }
+
+      footer p {
+        font-size: 0.9rem;
+        margin: 0;
+        color: #ddd;
+      }
+
+      @media (max-width: 768px) {
+        .product-info {
+          flex-direction: column;
+        }
+        .product-image {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+        <div th:replace="/index/navbar :: navbar"> </div>
+    </header>
+    <br>
+    <br>
+
+    <!-- Seção do produto -->
+    <section class="product-section">
+      <div class="product-info">
+        <div class="product-image">
+          <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" alt="{{ produto['nome'] }}">
+        </div>
+        <div class="product-details">
+          <h2 th:text="${produto.nome}">Nome do Produto</h2>
+          <p class="product-price"> R$ <span th:text="${produto.percentual}">0,00</span></p>
+          <!-- Botão Adicionar ao Carrinho com ícone -->
+          <form th:action="@{/home/carrinho/salvarProduto/{id}(id=${produto.idProduto})}" method="post">
+             <button class="buy-button">Adicionar ao Carrinho</button>
+          </form>
+        </div>
+      </div>
+      <div class="product-description">
+        <h3>Descrição do Produto</h3>
+        <p th:text="${produto.descricao}">
+            Descrição de Produto vem aqui
+        </p>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+     <footer>
+        <div th:replace="/index/rodape :: rodape"> </div>
+     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script>
+function adicionarAoCarrinho(produtoId) {
+    const quantidade = document.getElementById('quantidade').value;
+
+    if (!quantidade || quantidade <= 0) {
+        alert('Quantidade inválida');
+        return;
+    }
+
+    fetch(`/adicionar_ao_carrinho/${produtoId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ quantidade: parseInt(quantidade) })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            window.location.href = '/cart';
+        } else {
+            alert(data.message || 'Erro ao adicionar ao carrinho');
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao adicionar ao carrinho');
+    });
+}
+
+      </script>
+      
+  </body>
+</html>

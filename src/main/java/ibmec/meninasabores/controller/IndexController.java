@@ -98,7 +98,7 @@ public class IndexController {
     public String vizualizar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("produto",produtoService.findById(id).orElseThrow(() ->
                  new RuntimeException("Produto não encontrado")));
-         return "/produto/vizualizar";
+         return "/produto/productpage";
     }
     
     @GetMapping("files/ver/{id}")
