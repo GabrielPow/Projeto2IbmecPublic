@@ -62,7 +62,7 @@ public class ImageController {
                 .sorted((imagen1, imagen2) -> imagen1.getName().compareTo(imagen2.getName()))
                 .collect(Collectors.toList());
         model.addAttribute("imagens", sortedImagens);
-        return "/files/listar";
+        return "/files/lista_imagens";
     }
 
     // Método para download do arquivo

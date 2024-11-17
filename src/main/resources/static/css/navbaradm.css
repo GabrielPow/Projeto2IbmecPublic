@@ -1,0 +1,95 @@
+      /* navbaradm.css */
+      .navbar-custom {
+        background-color: #992800;
+        min-height: 70px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050; /* Ajuste para garantir que esteja sempre acima */
+    }
+    
+    .navbar-custom .navbar-brand {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.75em;
+        font-weight: bold;
+        color: #fff;
+    }
+    
+    .navbar-custom .navbar-nav {
+        text-align: left;
+    }
+    
+    .navbar-custom .nav-link {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #fff !important;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    
+    .navbar-custom .nav-link:hover {
+        color: #FAC140 !important;
+    }
+    
+    /* Dropdown customizado */
+    .navbar-custom .dropdown-menu {
+        background-color: #992800;
+        border: none;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-custom .dropdown-item {
+        color: #FFFFFF;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 1.1em;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .navbar-custom .dropdown-item:hover {
+        background-color: #FAC140;
+        color: #FFFFFF;
+    }
+    
+    /* Toggler para dispositivos móveis */
+    .navbar-toggler {
+        border: none;
+        color: #FAC140;
+        font-size: 1.5em;
+    }
+    
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28%25255, %25255, %25255, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    /* Defina as fontes na navbar */
+.navbar-custom, .navbar-custom * {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Especifique novamente as fontes para os elementos relevantes */
+.navbar-custom .nav-link, .navbar-custom .dropdown-item {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+    
+    /* Ajuste para telas menores */
+    @media (max-width: 768px) {
+        .navbar-custom .navbar-nav {
+            text-align: center;
+            background-color: #992800;
+            width: 100%;
+        }
+    
+        .navbar-custom .dropdown-menu {
+            position: static;
+            float: none;
+            width: auto;
+            margin-top: 0;
+            background-color: #992800;
+        }
+    
+        .navbar-custom .dropdown-item {
+            padding: 10px;
+            text-align: left;
+        }
+    }

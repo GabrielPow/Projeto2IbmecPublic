@@ -41,13 +41,13 @@ public class CategoriaController {
                 .sorted((categoria1, categoria2) -> categoria1.getNome().compareTo(categoria2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("categorias", sortedCategorias);
-        return "/categoria/listar";
+        return "/categoria/lista_categoria";
     }
      
      
     @GetMapping("/novo")
     public String inserir(Categoria categoria, ModelMap model) {
-         return "/categoria/inserir";
+         return "/categoria/adicionar_categoria";
     }
      
     @PostMapping("/salvar")
@@ -59,7 +59,7 @@ public class CategoriaController {
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("categoria", categoriaService.findById(id));
-         return "/categoria/editar";
+         return "/categoria/editar_categoria";
     }
      
     @PostMapping("/atualizar")
@@ -67,7 +67,7 @@ public class CategoriaController {
              BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("categoria", categoria);
-             return "/categoria/editar";
+             return "/categoria/editar_categoria";
          }
          categoriaService.update(categoria);
          return "redirect:/admin/categoria/listar";

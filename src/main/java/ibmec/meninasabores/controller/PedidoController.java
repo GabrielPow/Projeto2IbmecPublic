@@ -41,13 +41,13 @@ public class PedidoController {
                  .filter(carrinho -> !"Comprando".equals(carrinho.getStatus()))
                  .collect(Collectors.toList());
          model.addAttribute("carrinhos", sortedCarrinhos);
-         return "/carrinho/listar";
+         return "/carrinho/lista_carrinho";
     }
     
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("carrinho", carrinhoService.findById(id));
-         return "/carrinho/editar";
+         return "/carrinho/editar_carrinho";
     }
      
     @PostMapping("/atualizar")
@@ -55,7 +55,7 @@ public class PedidoController {
              BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("carrinho", carrinho);
-             return "/carrinho/editar";
+             return "/carrinho/editar_carrinho";
          }
          carrinhoService.update(carrinho);
          return "redirect:/admin/carrinho/pedidos";

@@ -59,15 +59,15 @@ public class CarrinhoController {
         return "carrinho/cart";
     }
     
-    @GetMapping("/pedidos")
+    /*@GetMapping("/pedidos")
     public String listar(ModelMap model) {
          List<Carrinho> carrinhos = carrinhoService.findAll();
          List<Carrinho> sortedCarrinhos = carrinhos.stream()
                  .filter(carrinho -> !"Comprando".equals(carrinho.getStatus()))
                  .collect(Collectors.toList());
          model.addAttribute("carrinhos", sortedCarrinhos);
-         return "/carrinho/listar";
-    }
+         return "/carrinho/lista_carrinho";
+    }*/
 
     @PostMapping("/salvarProduto/{id}")
     public String addProductToCarrinho(@ModelAttribute("carrinho") Carrinho carrinho, @PathVariable UUID id) {
