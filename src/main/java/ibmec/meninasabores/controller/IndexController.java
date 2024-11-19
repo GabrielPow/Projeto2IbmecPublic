@@ -45,7 +45,7 @@ public class IndexController {
     
     @GetMapping("contato")
     public String contato() {
-        return "/index/contato";
+        return "/index/contato_1";
     }
     
     @GetMapping("quemsomos")
@@ -61,13 +61,6 @@ public class IndexController {
     @GetMapping("/login")
     public String loginPage() {
         return "/index/login"; // templates/login.html
-    }
-    
-    @GetMapping("/carrinho")
-    public String Carrinho(@ModelAttribute("carrinho") Carrinho carrinho, ModelMap model) {
-        carrinho.getcProdutos().sort(Comparator.comparing(produto -> produto.getNome()));
-        model.addAttribute("carrinho",carrinho);
-        return "/carrinho/cart";
     }
     
     @GetMapping("/produtos")

@@ -6,21 +6,19 @@ package ibmec.meninasabores.controller;
 
 import ibmec.meninasabores.model.Carrinho;
 import ibmec.meninasabores.model.Cliente;
+import ibmec.meninasabores.model.Pedidos;
 import ibmec.meninasabores.model.Produto;
 import ibmec.meninasabores.service.CarrinhoService;
 import ibmec.meninasabores.service.ClienteService;
 import ibmec.meninasabores.service.ProdutoService;
+import ibmec.meninasabores.service.PedidosService;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +45,9 @@ public class CarrinhoController {
     @Autowired
     private ClienteService clienteService;
     
+    @Autowired
+    private PedidosService pedidoService;
+    
     @ModelAttribute("carrinho")
     public Carrinho getCarrinho() {
         return new Carrinho();
@@ -56,7 +57,7 @@ public class CarrinhoController {
     public String Carrinho(@ModelAttribute("carrinho") Carrinho carrinho, ModelMap model) {
         carrinho.getcProdutos().sort(Comparator.comparing(produto -> produto.getNome()));
         model.addAttribute("carrinho",carrinho);
-        return "carrinho/cart";
+        return "carrinho/cart_1";
     }
     
     /*@GetMapping("/pedidos")
@@ -99,7 +100,7 @@ public class CarrinhoController {
     
     @PostMapping("/exportarCarrinho")
     public String exportarProdutos(@ModelAttribute("carrinho") Carrinho carrinho, ModelMap model,@RequestParam String name,@RequestParam String email) {
-        Optional<Cliente> insert = clienteService.findByNomec(name);
+       Optional<Cliente> insert = clienteService.findByNomec(name);
         if (!insert.isPresent()) {
             Cliente novoCliente = new Cliente(name, email);
             clienteService.save(novoCliente);
@@ -108,6 +109,15 @@ public class CarrinhoController {
                 new RuntimeException("Cliente Não encontrado"));
         carrinho.setCliente(cliente);
         carrinho.setStatus("Pagamento");
+        Pedidos novoPedido = new Pedidos();
+        novoPedido.setNomec(name);
+        novoPedido.setPreco(carrinho.getPercentual());
+        novoPedido.setStatus(carrinho.getStatus());
+        for (Produto produto : carrinho.getcProdutos()) {
+            novoPedido.getNomeProdutos().add(produto.getNome());
+            novoPedido.getPrecoProdutos().add(produto.getPercentual());
+        }
+        pedidoService.save(novoPedido);
         carrinhoService.save(carrinho);
         Carrinho novoCarrinho = new Carrinho();
         model.addAttribute("carrinho",novoCarrinho);

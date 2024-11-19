@@ -1,0 +1,72 @@
+/* Estilo do Rodapé */
+.footer-custom {
+  background-color: #992800;
+  color: #fff;
+  padding: 40px 0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+  color: #FAC140;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #FFFFFF;
+}
+
+.footer-link {
+  color: #FAC140;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #FFFFFF;
+}
+
+.footer-copy {
+  font-size: 0.9em;
+  color: #FAC140;
+  margin-top: 20px;
+}
+
+.footer-custom .fa-phone-alt,
+.footer-custom .fa-envelope,
+.footer-custom .fa-map-marker-alt {
+  color: #FAC140;
+  margin-right: 8px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icons .footer-icon {
+  color: #FAC140;
+  transition: color 0.3s ease;
+}
+
+.social-icons .footer-icon:hover {
+  color: #FFFFFF;
+}
+
+/* Responsividade para rodapé */
+@media (max-width: 768px) {
+  .footer-custom .row {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+

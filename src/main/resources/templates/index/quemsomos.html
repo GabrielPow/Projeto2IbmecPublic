@@ -6,341 +6,476 @@
     <title>Quem Somos - Menina Sabores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/navbar.css">
+<style>
 
-        body {
-            line-height: 1.6;
-            background-color: #f2f2f2;
-            color: #333;
-            font-family: 'Arial', sans-serif;
-        }
+/* Estilos básicos da página */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
 
-        .navbar-custom {
-            background-color: #992800;
-            font-family: 'Arial', sans-serif;
-        }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.6;
+  background-color: #fff6e5;
+  color: #333;
+  padding-top: 70px; /* Ajuste com a altura real da navbar */;
+}
 
-        .navbar-custom .navbar-brand {
-            color: #fff;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+/* Header da página */
+header {
+  background-color: #F2C230;
+  padding: 20px 0;
+  text-align: center;
+}
 
-        .navbar-custom .nav-link {
-            color: #fff !important;
-            transition: color 0.3s ease;
-        }
 
-        .navbar-custom .nav-link:hover {
-            color: #FAC140 !important;
-        }
+/* Estilo para o título */
+h1 {
+  font-size: 36px;
+  color: #731B14;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
 
-        .navbar-custom .nav-link.active {
-            color: #fff !important;
-        }
+/* Seção "Quem Somos" */
+#quem-somos {
 
-        .navbar-custom .nav-link.active:hover {
-            color: #FAC140 !important;
-        }
+  background-color: #fff6e5;
+  padding: 40px 0; /* Ajuste o padding para remover o excesso de espaço */
+  margin-bottom: 0; /* Adicione se necessário para garantir que não tenha margem inferior extra */
 
-        /* Estilo do ícone de carrinho */
-        .navbar-custom .cart-icon {
-            color: #fff;
-            margin-left: 15px;
-        }
+}
 
-        .navbar-custom .cart-icon:hover {
-            color: #FAC140;
-        }
 
-        header {
-            background-color: #F2C230;
-            padding: 20px 0;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-        }
+#quem-somos .container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-        }
+#quem-somos.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        h1 {
-            font-size: 36px;
-            color: #731B14;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-        }
+/* Título "Quem Somos" */
+.quem-somos-titulo {
+    font-size: 42px;
+    color: #731B14;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
 
-        .tagline {
-            font-size: 18px;
-            color: #BF3E21;
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-            font-weight: lighter;
-        }
+/* Subtítulo e destaques */
+.quem-somos-tagline {
+    font-size: 20px;
+    color: #BF3E21;
+    margin-bottom: 25px;
+    font-style: italic;
+}
 
-        .highlight-section {
-            background-color: #F26B1D;
-            color: white;
-            padding: 50px 0;
-            font-family: 'Arial', sans-serif;
-        }
+/* Descrição */
+.quem-somos-descricao {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 15px;
+    padding: 0 20px;
+}
 
-        .stats {
+/* Estilo para subtítulos e destaques */
+.tagline {
+  font-size: 18px;
+  color: #BF3E21;
+  margin-bottom: 20px;
+  font-weight: lighter;
+}
+
+/* Seção da Timeline - Histórico da Iniciativa */
+
+.timeline-item:hover {
+    transform: scale(1.03);
+}
+
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.timeline-image:hover {
+    transform: scale(1.05);
+}
+
+
+.timeline-section {
+    padding: 0px 0;
+    background-color: #fff6e5; /* Fundo suave */
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.timeline-title {
+    font-size: 42px;
+    color: #731B14; /* Título em tom escuro */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+}
+
+.timeline {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espaço entre os itens */
+}
+
+/* Estilo dos itens da timeline */
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #FDF2E9; /* Fundo bege claro para o card */
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 8px solid #BF3E21; /* Borda lateral colorida */
+    padding-left: 20px; /* Espaçamento adicional do lado esquerdo */
+}
+
+.timeline-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item-content h2 {
+    font-size: 26px;
+    color: #BF3E21; /* Cor do título em um tom mais intenso */
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.timeline-item-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333; /* Texto em tom escuro */
+}
+
+/* Imagem */
+.timeline-item img {
+    width: 45%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    margin-right: 20px; /* Espaçamento entre imagem e conteúdo */
+}
+
+
+
+.timeline-item img:hover {
+    transform: scale(1.05);
+}
+
+.timeline-item-content {
+    width: 45%;
+    padding: 20px;
+    text-align: left;
+}
+
+.timeline-item-content h2 {
+    font-size: 26px;
+    color: #731B14; /* Cor do título do card em tom escuro */
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.timeline-item-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333; /* Texto em tom escuro */
+}
+
+/* Alternando a ordem dos elementos da timeline para ímpar e par */
+.timeline-item:nth-child(odd) .timeline-item-content {
+    order: 1;
+}
+
+.timeline-item:nth-child(odd) img {
+    order: 2;
+}
+
+.timeline-item:nth-child(even) .timeline-item-content {
+    order: 2;
+}
+
+.timeline-item:nth-child(even) img {
+    order: 1;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-item img,
+    .timeline-item-content {
+        width: 100%;
+    }
+}
+
+
+.history-background {
             display: flex;
-            justify-content: space-around;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .stat {
-            flex: 1;
-            margin: 0 15px;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .stat h2 {
-            font-size: 40px;
-            color: #F2F2F2;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-        }
-
-        footer {
-            background-color: #BF3E21;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        footer nav ul {
             justify-content: center;
-            font-family: 'Arial', sans-serif;
-        }
-
-        footer nav ul li {
-            margin: 0 10px;
-            font-family: 'Arial', sans-serif;
-        }
-
-        footer nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Estilos para a timeline */
-        .timeline-section {
-            padding: 50px 0;
-            background-color: #fff;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .timeline-section h1 {
-            font-size: 36px;
-            color: #BF3E21;
-            margin-bottom: 30px;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .timeline {
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #F26B1D;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .timeline-item {
+            background-color: #f26b1d; /* Fundo laranja */
             padding: 20px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-item img {
+        .history-container {
+            display: flex;
+            flex-direction: row;
             width: 100%;
-            border-radius: 10px;
+            max-width: 1200px;
+            background-color: #f26b1d; /* Fundo laranja */
+            color: #ffffff; /* Texto branco */
+            margin: 0 auto; /* Centraliza o contêiner */
+            font-family: 'Open Sans', sans-serif;
         }
 
-        .timeline-item-content {
-            padding: 20px;
-            background-color: #f2f2f2;
-            border-radius: 8px;
-            position: relative;
-            margin: 20px 0;
-            font-family: 'Arial', sans-serif;
+        .history-content {
+            flex: 1;
+            padding: 2rem;
         }
 
-        .timeline-item:nth-child(odd) .timeline-item-content {
-            margin-left: 0;
-            text-align: right;
-            font-family: 'Arial', sans-serif;
+        .history-content .section-title {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .timeline-item:nth-child(even) .timeline-item-content {
-            margin-left: 30px;
-            text-align: left;
-            font-family: 'Arial', sans-serif;
+        .history-block {
+            margin-top: 1.5rem;
         }
 
-        .timeline-item-content h2 {
-            font-size: 24px;
-            color: #731B14;
-            margin-bottom: 10px;
-            font-family: 'Arial', sans-serif;
+        .history-block h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #ffe5d0; /* Subtítulos em tom claro */
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .history-block p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ffffff; /* Texto branco */
+        }
+
+        .conclusion {
+            margin-top: 1.5rem;
             font-weight: bold;
+            text-align: center;
+            color: #ffe5d0; /* Texto da conclusão em tom mais claro */
+            font-size: 1.2rem;
         }
 
-        .timeline-item-content p {
-            font-size: 16px;
-            font-family: 'Arial', sans-serif;
+        .history-image {
+            flex: 1;
+            background-image: url('static/images/quilombo_image.png'); /* Caminho atualizado */
+            background-size: cover;
+            background-position: center;
         }
 
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #F26B1D;
-            border-radius: 50%;
-            top: 15px;
-            left: calc(50% - 10px);
+        /* Ajustes para telas menores */
+        @media (max-width: 768px) {
+            .history-container {
+                flex-direction: column;
+            }
+            .history-image {
+                width: 100%; /* Largura total da tela */
+                height: 200px;
+            }
         }
+        html, body {
+  height: 100%; /* Garantir que o conteúdo do body ocupe toda a altura da janela */
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #fff6e5;
+}
+
+footer {
+  margin-top: auto; /* Isso vai garantir que o rodapé fique no fundo */
+}
+
+        
+
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Integração de fontes do Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#" th:href="@{/home}">Menina Sabores</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/home}">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#" th:href="@{/home/quemsomos}">Quem somos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/home/produtos}">Produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" th:href="@{/home/contato}">Contato</a>
-          </li>
-        </ul>
-        <!-- Ícone do Carrinho -->
-        <a href="{{ url_for('cart') }}" class="cart-icon">
-          <i class="fas fa-shopping-cart fa-2x"></i>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-<section id="quem-somos">
+  <header>
+     <div th:replace="/index/navbar :: navbar"> </div>
+  </header>
+  <main>
+    <br>
+    <br>
+  <section id="quem-somos" style="background-color: #fff6e5; padding: 60px 0;">
     <div class="container">
-        <h1>Quem Somos</h1>
-        <p class="tagline">Acolhendo memórias e sabores ancestrais</p>
-        <p>Na Menina Sabores, somos mais do que uma marca de receitas quilombolas. Nós valorizamos a cultura, a ancestralidade e o afeto que cada receita traz. Cada doce, geleia ou licor carrega uma história, um pedacinho da nossa família, das raízes que fazem parte de quem somos hoje.</p>
-        <p>Nossa missão é levar até você produtos que não só aquecem o paladar, mas também o coração. Acreditamos que a memória afetiva, o acolhimento e a tradição são os ingredientes essenciais em tudo o que fazemos.</p>
+        <h1 class="quem-somos-titulo">Quem Somos</h1>
+        <p class="quem-somos-tagline">Acolhendo memórias e sabores ancestrais</p>
+        <p class="quem-somos-descricao"><strong>Meninas Sabores</strong> é uma empresa de produtos artesanais fundada por Michelle Aparecida da Cruz, dedicada a preservar receitas e tradições culinárias ancestrais. Produz compotas, geleias, conservas, doces e licores, usando ingredientes de qualidade, muitos cultivados em hortas próprias. A Meninas Sabores celebra a história e a cultura quilombola, conectando sabores autênticos com a memória de uma comunidade resiliente.</p>
     </div>
-</section>
-
-<section id="historia" class="highlight-section">
-    <div class="container">
-        <div class="stats">
-            <div class="stat">
-                <h2>4 anos</h2>
-                <p>De tradição familiar em receitas quilombolas, desde 2020</p>
+   <!-- Contêiner de fundo da história -->
+   <div class="history-background">
+    <section id="historia-meninas-sabores" class="history-container">
+        <div class="history-content">
+            <h2 class="section-title">Nossa História</h2>
+            
+            <div class="history-block">
+                <h3>Nossas Raízes</h3>
+                <p>Nosso início se dá com a coragem de nossos ancestrais que, ao fugirem da escravidão, conquistaram liberdade e terras na região de Sape de Ubá. Ali, estabeleceram suas raízes e construíram um legado de resistência e prosperidade. Eram Cruz, Tavares, Aleluia, Martins e Tomé — e hoje, carregamos com orgulho esses nomes que moldaram nossa identidade.</p>
             </div>
-            <div class="stat">
-                <h2>Mais de 20 produtos</h2>
-                <p>Incluindo geleias e licores feitos artesanalmente com ingredientes naturais</p>
+            
+            <div class="history-block">
+                <h3>O Legado dos Ancestrais</h3>
+                <p>Com as técnicas agrícolas herdadas, plantamos e colhemos alimentos de qualidade, transformando cada ingrediente em receitas que honram nossa cultura e tradição. Além disso, acreditamos na preservação do solo e no respeito ao meio ambiente, praticando a troca de sementes com outras comunidades e cultivando hortas e pomares próprios.</p>
             </div>
+            
+            <div class="history-block">
+                <h3>Compromisso com a Tradição</h3>
+                <p>Na Meninas Sabores, cada produto é uma homenagem aos nossos antepassados e ao poder das nossas raízes. Nosso compromisso é levar até você o sabor genuíno de doces que contam histórias e a essência de uma cultura que celebra a resistência, a liberdade e a valorização das origens.</p>
+            </div>
+            
+            <p class="conclusion">Meninas Sabores é mais do que uma marca; é uma forma de manter viva a herança quilombola e compartilhar a riqueza de uma tradição construída com força, resiliência e amor.</p>
         </div>
-    </div>
-</section>
 
-<!-- Seção de Timeline -->
+        <div class="history-image"></div> <!-- Área da imagem -->
+    </section>
+</div>
+<br>
+<br>
+<br>
+<br>
 <section class="timeline-section">
-    <h1>Processo de Produção - Menina Sabores</h1>
-    <div class="timeline">
+  <h1 class="timeline-title">Processo de Produção - Menina Sabores</h1>
+  <div class="timeline timeline-production">
+      <!-- Etapa 1: Colheita -->
+      <div class="timeline-item">
+          <img src="/images/index/processo1.png" alt="Imagem de colheita dos frutos">
+          <div class="timeline-item-content">
+              <h2>Primeira Etapa - Colheita</h2>
+              <p>O pai de Michelle cuida da colheita das frutas, selecionando as melhores e garantindo a qualidade. A produção começa no campo, com o cuidado necessário para que os frutos cheguem frescos e saudáveis até a cozinha.</p>
+          </div>
+      </div>
 
-        <!-- Etapa 1: Colheita -->
-        <div class="timeline-item">
-            <div class="timeline-item-content">
-                <h2>Primeira Etapa - Colheita</h2>
-                <p>O pai de Michelle cuida da colheita das frutas, garantindo que os melhores frutos sejam escolhidos para a produção das geleias e licores.</p>
-            </div>
-            <img src="/images/index/colhendo.png" alt="Imagem de colheita dos frutos">
-        </div>
+      <!-- Etapa 2: Produção -->
+      <div class="timeline-item">
+          <div class="timeline-item-content">
+              <h2>Segunda Etapa - Produção</h2>
+              <p>Michelle e sua mãe se dedicam à produção artesanal, utilizando técnicas tradicionais. Elas transformam os frutos colhidos em compotas, geleias, conservas e licores, mantendo a autenticidade dos sabores quilombolas.</p>
+          </div>
+          <img src="/images/index/processo2.png" alt="Imagem de produção de geleias e licores">
+      </div>
 
-        <!-- Etapa 2: Produção -->
-        <div class="timeline-item">
-            <img src="/images/index/cozinha.png" alt="Imagem de produção de geleias e licores">
-            <div class="timeline-item-content">
-                <h2>Segunda Etapa - Produção</h2>
-                <p>Michelle e sua mãe se dedicam à produção artesanal, criando geleias e licores com receitas quilombolas que passam de geração em geração.</p>
-            </div>
-        </div>
-
-        <!-- Etapa 3: Produto Final -->
-        <div class="timeline-item">
-            <div class="timeline-item-content">
-                <h2>Terceira Etapa - Produto Pronto</h2>
-                <p>As geleias e licores são embalados e prontos para serem entregues aos clientes, trazendo sabor e memória afetiva em cada frasco.</p>
-            </div>
-            <img src="/images/index/etapa3.png" alt="Imagem do produto final - geleias e licores">
-        </div>
-
-    </div>
+      <!-- Etapa 3: Produto Final -->
+      <div class="timeline-item">
+          <img src="/images/index/etapa3.png" alt="Imagem do produto final - geleias e licores">
+          <div class="timeline-item-content">
+              <h2>Terceira Etapa - Produto Pronto</h2>
+              <p>As geleias e licores são cuidadosamente embalados, prontos para chegar até você. Cada produto é feito com amor e cuidado, refletindo a tradição e a qualidade da Menina Sabores.</p>
+          </div>
+      </div>
+  </div>
 </section>
+<!-- Coloque isso no final do corpo (antes de fechar a tag </body>) -->
+<script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+const movingBall = document.getElementById("movingBall");
+const timeline = document.querySelector(".timeline-production");
+
+function updateBallPosition() {
+    if (!timeline) return;
+
+    const timelineTop = timeline.offsetTop;
+    const timelineHeight = timeline.offsetHeight;
+    const viewportHeight = window.innerHeight;
+    const scrollPosition = window.scrollY;
+
+    // Calcula a posição para manter a bolinha na linha da timeline
+    const maxBallPosition = timelineHeight - movingBall.offsetHeight;
+    const scrollOffset = scrollPosition + viewportHeight / 2 - timelineTop;
+    const newTopPosition = Math.min(Math.max(scrollOffset, 0), maxBallPosition);
+
+    movingBall.style.top = newTopPosition + "px";
+
+    // Aplica zoom e muda a cor da bolinha fixa para amarela quando a bolinha móvel entra na região da bolinha fixa
+    document.querySelectorAll(".timeline-production .timeline-item").forEach(item => {
+        const itemBallPosition = item.getBoundingClientRect().top + window.scrollY + item.offsetHeight / 2;
+        if (Math.abs(newTopPosition + timelineTop - itemBallPosition) < 10) { // Alinhamento próximo entre as bolinhas
+            item.classList.add("highlight-ball");
+        } else {
+            item.classList.remove("highlight-ball");
+        }
+    });
+}
+
+function onScroll() {
+    requestAnimationFrame(updateBallPosition);
+}
+
+// Chama a função onScroll apenas quando o usuário rolar a página
+window.addEventListener("scroll", onScroll);
+</script>
+<script>
+  document.addEventListener("scroll", function () {
+      const section = document.querySelector("#quem-somos");
+      const sectionPosition = section.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+
+      if (sectionPosition < screenPosition) {
+          section.classList.add("in-view");
+      }
+  });
+</script>
+</main>
+<div th:replace="/index/instagram :: instagram"> </div>
 <footer>
-    <p>Menina Sabores © 2024 - Todos os direitos reservados.</p>
-    <nav> 
-        <ul>
-            <li><a href="#nossas-marcas">Nossas Receitas</a></li>
-            <li><a href="#historia">Nossa História</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
+     <div th:replace="/index/rodape :: rodape"> </div>
 </footer>
 </body>
 </html>
