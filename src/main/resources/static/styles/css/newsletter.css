@@ -1,0 +1,84 @@
+    /* Seção de Newsletter */
+.newsletter-section {
+  background-color: #f26b1d;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Container Principal */
+.newsletter-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.newsletter-container h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.newsletter-container p {
+  font-family: 'Quicksand', sans-serif;
+  color: #FFE0B2;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+/* Container do Formulário */
+.newsletter-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Formulário */
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap; /* Garante que o botão e o campo fiquem na mesma linha */
+}
+
+.newsletter-form input[type="email"] {
+  font-family: 'Quicksand', sans-serif;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  flex: 1; /* Faz o campo de email ocupar o espaço restante */
+  min-width: 250px; /* Define uma largura mínima para evitar encolhimento */
+  color: #333;
+  background-color: #FFE0B2;
+}
+
+.newsletter-form button {
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 12px 20px; /* Ajuste de padding */
+  font-size: 1rem;
+  color: #FFFFFF;
+  background-color: #D85B15;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover {
+  background-color: #B94D13;
+  transform: scale(1.05);
+}
+
+/* Ajustes para Telas Menores */
+@media (max-width: 600px) {
+  .newsletter-form {
+    flex-direction: column; /* Reorganiza o botão abaixo do campo de email em telas menores */
+  }
+  .newsletter-form input[type="email"], .newsletter-form button {
+    width: 100%; /* Ocupa toda a largura em telas menores */
+  }
+}
+

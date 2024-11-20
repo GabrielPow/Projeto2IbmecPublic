@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -39,7 +40,14 @@ public class IndexController {
     private ImagemService ImageService;
     
     @GetMapping({"","/","principal"})
-    public String index() {
+    public String index(ModelMap model) {
+        List<Produto> produtos = produtoService.findAll();
+        List<Produto> sortedProdutos = produtos.stream()
+                .filter(Produto::isStatus)
+                .filter(Produto::isDestaque)
+                .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("produtosTodos", sortedProdutos);
         return "/index/index";
     }
     
@@ -63,15 +71,27 @@ public class IndexController {
         return "/index/login"; // templates/login.html
     }
     
+    @GetMapping("/buscar_produtos")
+    public String buscarProduto(ModelMap model, @RequestParam(value = "query", required = false) String query) {
+        List<Produto> produtos = produtoService.findAll();
+        List<Produto> filteredProdutos = produtos.stream()
+                .filter(Produto::isStatus)
+                .filter(produto -> query.equalsIgnoreCase(produto.getCategoria().getNome()))
+                .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("produtosQuery", filteredProdutos);
+        model.addAttribute("query", query);
+        return "/produto/produto";
+    }
+    
     @GetMapping("/produtos")
     public String listaProduto(ModelMap model) {
         List<Produto> produtos = produtoService.findAll();
         List<Produto> sortedProdutos = produtos.stream()
                 .filter(Produto::isStatus)
-                .filter(Produto::isDestaque)
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
-        model.addAttribute("produtosDestaque", sortedProdutos);
+        model.addAttribute("produtosTodos", sortedProdutos);
         List<Produto> ProdutosLicor = produtos.stream()
                 .filter(Produto::isStatus)
                 .filter(produto -> "Licor".equalsIgnoreCase(produto.getCategoria().getNome()))
@@ -84,7 +104,49 @@ public class IndexController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtosGeleia", ProdutosGeleia);
-        return "/produto/listaProduto";
+        List<Produto> ProdutosDoce = produtos.stream()
+                .filter(Produto::isStatus)
+                .filter(produto -> "Doce".equalsIgnoreCase(produto.getCategoria().getNome()))
+                .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("produtosDoce", ProdutosDoce);
+        return "/produto/produto";
+    }
+    
+    @GetMapping("/produtos/geleias")
+    public String produtoGeleia(ModelMap model) {
+        List<Produto> produtos = produtoService.findAll();
+        List<Produto> ProdutosGeleia = produtos.stream()
+                .filter(Produto::isStatus)
+                .filter(produto -> "Geleia".equalsIgnoreCase(produto.getCategoria().getNome()))
+                .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("produtosGeleia", ProdutosGeleia);
+        return "/produto/produto";
+    }
+    
+    @GetMapping("/produtos/licores")
+    public String produtoLicor(ModelMap model) {
+        List<Produto> produtos = produtoService.findAll();
+        List<Produto> ProdutosLicor = produtos.stream()
+                .filter(Produto::isStatus)
+                .filter(produto -> "Licor".equalsIgnoreCase(produto.getCategoria().getNome()))
+                .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("produtosLicor", ProdutosLicor);
+        return "/produto/produto";
+    }
+    
+    @GetMapping("/produtos/doces")
+    public String produtoDoce(ModelMap model) {
+        List<Produto> produtos = produtoService.findAll();
+        List<Produto> ProdutosDoce = produtos.stream()
+                .filter(Produto::isStatus)
+                .filter(produto -> "Doce".equalsIgnoreCase(produto.getCategoria().getNome()))
+                .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
+                .collect(Collectors.toList());
+        model.addAttribute("produtosDoce", ProdutosDoce);
+        return "/produto/produto";
     }
     
     @GetMapping("/vizualizar/{id}")

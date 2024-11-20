@@ -20,9 +20,10 @@
             Produtos
           </a>
           <ul class="dropdown-menu dropdown-custom" aria-labelledby="produtosDropdown">
-            <li><a class="dropdown-item" href="{{ url_for('lista_produtos') }}">Todos os Produtos</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('lista_produtos') }}#geleias">Geleias</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('lista_produtos') }}#licores">Licores</a></li>
+            <li><a class="dropdown-item" th:href="@{/home/produtos}">Todos os Produtos</a></li>
+            <li><a class="dropdown-item" th:href="@{/home/produtos/geleias}">Geleias</a></li>
+            <li><a class="dropdown-item" th:href="@{/home/produtos/licores}">Licores</a></li>
+            <li><a class="dropdown-item" th:href="@{/home/produtos/doces}">Doces</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -31,8 +32,8 @@
       </ul>
     </div>
     <div class="d-flex align-items-center">
-      <form class="d-none d-lg-flex me-3" action="{{ url_for('buscar_produtos') }}" method="GET">
-        <input class="form-control" type="search" name="query" placeholder="Buscar..." aria-label="Buscar">
+      <form class="d-none d-lg-flex me-3" th:action="@{/home/buscar_produtos}" method="GET">
+        <input class="form-control" th:value="${query}" type="search" name="query" placeholder="Buscar..." aria-label="Buscar">
         <button class="btn btn-outline-light ms-2" type="submit"><i class="fas fa-search"></i></button>
       </form>
       <a href="{{ url_for('cart') }}" th:href="@{/home/carrinho/ver}" class="nav-link cart-icon me-2">

@@ -25,7 +25,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info btn-right">Principal</a>
+        <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info btn-right">Voltar</a>
         <h1>Confirmar Exclusão</h1>
         <p>Tem certeza de que deseja excluir o produto <span th:text="${carrinho.idCarrinho}">Nome do Pedido</span>?</p>
         <form action="#" th:action="@{/admin/carrinho/excluir/{id}(id=${carrinho.idCarrinho})}" method="post">
