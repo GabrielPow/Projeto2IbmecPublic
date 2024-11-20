@@ -71,7 +71,7 @@
 <body>
     <!-- Navbar -->
     <header>
-     <div th:replace="/index/navbar :: navbar"> </div>
+     <div th:replace="~{/index/navbar :: navbar}"> </div>
     </header>
     <br>
     <br>
@@ -96,10 +96,11 @@
                         </td>
                         <td th:text="${produto.percentual}"></td>
                         <td class="text-center">
-                            <button class="btn-remove" title="Remover">
-                                <a th:href="@{/home/carrinho/removerProduto/{id}(id=${produto.idProduto})}"></a>
+                            <a th:href="@{/home/carrinho/removerProduto/{id}(id=${produto.idProduto})}">
+                                <button class="btn-remove" title="Remover">
                                 <i class="fas fa-trash-alt"></i>
-                            </button>
+                                    </button>
+                            </a>
                         </td>
                     </tr>
                     <tr>
