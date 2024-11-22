@@ -51,5 +51,9 @@ public class ImagemService {
     public ImagemEntity update(ImagemEntity imagem) {
         return imagemRepository.save(imagem);
     }
+        
+    public long count() {
+        return imagemRepository.count();
+    }
     
 }

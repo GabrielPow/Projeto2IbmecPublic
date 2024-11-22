@@ -6,12 +6,17 @@ package ibmec.meninasabores.controller;
 
 import ibmec.meninasabores.model.Categoria;
 import ibmec.meninasabores.model.ImagemEntity;
+import ibmec.meninasabores.model.Pedidos;
 import ibmec.meninasabores.model.Produto;
 import ibmec.meninasabores.service.CategoriaService;
 import ibmec.meninasabores.service.ImagemService;
+import ibmec.meninasabores.service.MensagenService;
+import ibmec.meninasabores.service.PedidosService;
 import ibmec.meninasabores.service.ProdutoService;
 import jakarta.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -44,8 +49,19 @@ public class ProdutoController {
     @Autowired
     private ImagemService imageService;
     
+    @Autowired
+    private PedidosService pedidoService;
+    
+    @Autowired
+    private MensagenService mensagemService;
+    
     @GetMapping("/painel")
-    public String painel() {
+    public String painel(ModelMap model) {
+        model.addAttribute("totalProdutos", produtoService.count());
+        model.addAttribute("totalCategorias", categoriaRepository.count());
+        model.addAttribute("totalImagens", imageService.count());
+        model.addAttribute("totalPedidos", pedidoService.count());
+        model.addAttribute("totalMensagens", mensagemService.count());
         return "/produto/paineladm";
     }
     
@@ -69,7 +85,7 @@ public class ProdutoController {
          return "/produto/adicionar_produto";
      }
      
-    @GetMapping("/listaProduto")
+    /*@GetMapping("/listaProduto")
      public String listaProduto(ModelMap model) {
          List<Produto> produtos = produtoService.findAll();
          List<Produto> sortedProdutos = produtos.stream()
@@ -93,7 +109,7 @@ public class ProdutoController {
          return "/produto/listaProduto";
      }
      
-     /*@GetMapping("/vizualizar/{id}")
+     @GetMapping("/vizualizar/{id}")
      public String vizualizar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("produto",produtoService.findById(id).orElseThrow(() ->
                  new RuntimeException("Produto não encontrado")));
@@ -148,4 +164,27 @@ public class ProdutoController {
                  .orElseGet(() -> ResponseEntity.notFound().build());
      }
      
+     @GetMapping("/vendidos")
+     public String vendidos(ModelMap model) {
+         List<Produto> produtos = produtoService.findAll();
+         List<Pedidos> pedidos = pedidoService.findAll();
+         Map<String, Double> contaProdutoNome = new HashMap<>();
+         for (Produto produto : produtos) {
+            String produtoNome = produto.getNome();
+            double produtoPreco = produto.getPercentual();
+            int count = 0;
+            for (Pedidos pedido : pedidos) {
+                List<String> nomesProdutos = pedido.getNomeProdutos();
+                for (String nome : nomesProdutos) {
+                    if (nome.equals(produtoNome)) {
+                        count++;
+                    }
+                }
+            }
+            double total = count * produtoPreco;
+            contaProdutoNome.put(produtoNome, total);
+         }
+         model.addAttribute("contaProdutos", contaProdutoNome);
+         return "/produto/lista_estatistica";
+     }
 }

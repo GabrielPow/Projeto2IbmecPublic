@@ -29,7 +29,7 @@ public class Categoria implements Serializable{
     @Column(name = "ID_CATEGORIA")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCategoria;
-    @Column(name = "NOME", nullable = false, unique = true, length = 20)
+    @Column(name = "NOME", nullable = false, length = 20)
     private String nome;
     @OneToMany(mappedBy = "categoria")
     private List<Produto> produtos;

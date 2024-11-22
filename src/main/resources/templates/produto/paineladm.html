@@ -95,7 +95,7 @@
 </head>
 <body>
     <header>
-     <div th:replace="/produto/navbaradm :: navbaradm"> </div>
+     <div th:replace="~{/produto/navbaradm :: navbaradm}"> </div>
     </header>
     <br>
     <br>
@@ -121,7 +121,7 @@
                         <h5 class="card-title">Produtos</h5>
                     </div>
                     <div class="card-body">
-                        <p>Total de produtos cadastrados: <strong>10</strong></p>
+                        <p>Total de produtos cadastrados: <strong th:text="${totalProdutos}">0</strong></p>
                         <a href="/lista-produtos" th:href="@{/admin/produto/listar}" class="btn btn-primary">Gerenciar Produtos</a>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         <h5 class="card-title">Pedidos</h5>
                     </div>
                     <div class="card-body">
-                        <p>Total de pedidos recebidos: <strong>0</strong></p>
+                        <p>Total de pedidos recebidos: <strong th:text="${totalPedidos}">0</strong></p>
                         <a href="/gestao-pedidos" th:href="@{/admin/carrinho/pedidos}" class="btn btn-primary">Gerenciar Pedidos</a>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                         <h5 class="card-title">Categoria</h5>
                     </div>
                     <div class="card-body">
-                        <p>Total de categorias: <strong>0</strong></p>
+                        <p>Total de categorias: <strong th:text="${totalCategorias}">0</strong></p>
                         <a href="/gestao-pedidos" th:href="@{/admin/categoria/listar}" class="btn btn-primary">Gerenciar Categorias</a>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                         <h5 class="card-title">Imagens</h5>
                     </div>
                     <div class="card-body">
-                        <p>Total de imagens: <strong>0</strong></p>
+                        <p>Total de imagens: <strong th:text="${totalImagens}">0</strong></p>
                         <a href="/gestao-pedidos" th:href="@{/admin/files/listar}" class="btn btn-primary">Gerenciar Imagens</a>
                     </div>
                 </div>
@@ -173,8 +173,21 @@
                         <h5 class="card-title">Mensagens</h5>
                     </div>
                     <div class="card-body">
-                        <p>Total de mensagens: <strong>0</strong></p>
-                        <a href="/gestao-pedidos" th:href="@{/admin/mensagens/listar}" class="btn btn-primary">Gerenciar Mensagens</a>
+                        <p>Total de mensagens: <strong th:text="${totalMensagens}">0</strong></p>
+                        <a href="/gestao-pedidos" th:href="@{/admin/mensagem/listar}" class="btn btn-primary">Gerenciar Mensagens</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <!-- Estatísticas de Vendidos -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Mais Vendidos</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Veja os produtos mais vendidos</p>
+                        <a th:href="@{/admin/produto/vendidos}" class="btn btn-primary">Ver Vendidos</a>
                     </div>
                 </div>
             </div>
@@ -194,8 +207,14 @@
                             <li><a href="/gestao-pedidos" th:href="@{/admin/carrinho/pedidos}" class="btn btn-link">Gestão de Pedidos</a></li>
                             <li><a href="/paineladm/mensagens" th:href="@{/admin/categoria/listar}" class="btn btn-link">Gestão de Categoria</a></li>
                             <li><a href="/gestao-contas" th:href="@{/admin/files/listar}" class="btn btn-link">Gestão de Imagens</a></li>
-                            <li><a href="/gestao-mensagens" th:href="@{/admin/mensagens/listar}" class="btn btn-link">Gestão de Mensagens</a></li>
-                            <li><a href="/sair" th:href="@{/home/loogut}" class="btn btn-link">Sair</a></li>
+                            <li><a href="/gestao-mensagens" th:href="@{/admin/mensagem/listar}" class="btn btn-link">Gestão de Mensagens</a></li>
+                            <li><a th:href="@{/admin/produto/vendidos}" class="btn btn-link">Ver Vendidos</a></li>
+                            <li>
+                                <a href="#" onclick="document.getElementById('logoutForm').submit();" class="btn btn-link">Logout</a>
+                                <form id="logoutForm" th:action="@{/home/logout}" method="post" style="display:none;">
+                                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                                </form>
+                           </li>
                         </ul>
                     </div>
                 </div>

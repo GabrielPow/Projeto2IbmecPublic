@@ -43,4 +43,8 @@ public class PedidosService {
         return pedidoRepository.save(pedido);
     }
     
+    public long count() {
+        return pedidoRepository.count();
+    }
+    
 }

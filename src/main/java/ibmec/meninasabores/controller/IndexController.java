@@ -6,8 +6,10 @@ package ibmec.meninasabores.controller;
 
 import ibmec.meninasabores.model.Carrinho;
 import ibmec.meninasabores.model.ImagemEntity;
+import ibmec.meninasabores.model.Mensagen;
 import ibmec.meninasabores.model.Produto;
 import ibmec.meninasabores.service.ImagemService;
+import ibmec.meninasabores.service.MensagenService;
 import ibmec.meninasabores.service.ProdutoService;
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +24,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,6 +41,9 @@ public class IndexController {
     
     @Autowired
     private ImagemService ImageService;
+    
+    @Autowired
+    private MensagenService mensagenService;
     
     @GetMapping({"","/","principal"})
     public String index(ModelMap model) {
@@ -61,9 +67,9 @@ public class IndexController {
         return "/index/quemsomos";
     }
     
-    @GetMapping("/loogut")
+    @PostMapping("/logout")
     public String logout() {
-        return "/index/index"; // templates/public/index.html
+        return "redirect:/home"; // templates/public/index.html
     }
 
     @GetMapping("/login")
@@ -177,6 +183,20 @@ public class IndexController {
         }
         return "application/octet-stream";
     }
+    
+    @GetMapping("/salvarMensagem")
+    public String salvar(
+        @RequestParam(value = "nome", required = true) String nome,
+        @RequestParam(value = "email", required = true) String email,
+        @RequestParam(value = "celular", required = true) String celular,
+        @RequestParam(value = "cidade", required = true) String cidade,
+        @RequestParam(value = "estado", required = true) String estado,
+        @RequestParam(value = "mensagem", required = true) String mensagem
+    ) {
+        Mensagen mensagen = new Mensagen(nome,email,celular,estado,cidade,mensagem);
+        mensagenService.save(mensagen);
+        return "redirect:/home/contato";
+     }
     
     
     

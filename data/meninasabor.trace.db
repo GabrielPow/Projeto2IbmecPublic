@@ -266,3 +266,6 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/gabri/D
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 61 more
+2024-11-22 18:48:24.893634-03:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL CHARACTER VARYING(20)": "'aasdasd@asfsfsdfsadfsadf.com' (28)"; SQL statement:
+insert into men_sab.tb_cliente (email,nome_completo,id_cliente) values (?,?,?) [22001-224]

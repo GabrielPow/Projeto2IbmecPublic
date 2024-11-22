@@ -25,12 +25,12 @@
 </head>
 <body>
     <div class="container mt-4">
-        <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-info btn-right">Voltar</a>
+        <a href="#" th:href="@{/admin/categoria/listar}" class="btn btn-info btn-right">Principal</a>
         <h1>Confirmar Exclusão</h1>
-        <p>Tem certeza de que deseja excluir o produto <span th:text="${pedido.idPedido}">Nome do Pedido</span>?</p>
-        <form action="#" th:action="@{/admin/carrinho/excluir/{id}(id=${pedido.idPedido})}" method="post">
+        <p>Tem certeza de que deseja excluir a mensagem <span th:text="${mensagem.nome}">Nome da Categoria</span>?</p>
+        <form action="#" th:action="@{/admin/mensagem/excluir/{id}(id=${mensagem.idMensagem})}" method="post">
             <button type="submit" class="btn btn-danger">Excluir</button>
-            <a href="#" th:href="@{/admin/carrinho/listar}" class="btn btn-secondary">Cancelar</a>
+            <a href="#" th:href="@{/admin/categoria/listar}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

@@ -40,7 +40,7 @@ public class ImageController {
     // Método para exibir a página de upload
     @GetMapping("/upload-page")
     public String showUploadPage() {
-        return "files/upload"; // Nome do ficheiro HTML sem a extensão (.html)
+        return "files/adicionar_imagens"; // Nome do ficheiro HTML sem a extensão (.html)
     }
 
     // Método para fazer o upload do arquivo

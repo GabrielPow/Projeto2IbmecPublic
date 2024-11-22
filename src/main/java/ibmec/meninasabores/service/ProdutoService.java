@@ -48,4 +48,8 @@ public class ProdutoService {
     public Produto update(Produto produto) {
         return produtoRepository.save(produto);
     }
+    
+    public long count() {
+        return produtoRepository.count();
+    }
 }

@@ -13,6 +13,8 @@ import ibmec.meninasabores.service.ClienteService;
 import ibmec.meninasabores.service.ProdutoService;
 import ibmec.meninasabores.service.PedidosService;
 import jakarta.servlet.http.HttpSession;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.UUID;
@@ -113,15 +115,26 @@ public class CarrinhoController {
         novoPedido.setNomec(name);
         novoPedido.setPreco(carrinho.getPercentual());
         novoPedido.setStatus(carrinho.getStatus());
+        
+        StringBuilder messageBuilder = new StringBuilder();
+        messageBuilder.append("Produtos no carrinho:\n");
+        
         for (Produto produto : carrinho.getcProdutos()) {
             novoPedido.getNomeProdutos().add(produto.getNome());
             novoPedido.getPrecoProdutos().add(produto.getPercentual());
+            
+            messageBuilder.append(produto.getNome()).append(": ").append(produto.getPercentual()).append("\n");
         }
+        double totalPreco = carrinho.getPercentual();
+        messageBuilder.append("Preço total: ").append(totalPreco);
         pedidoService.save(novoPedido);
-        carrinhoService.save(carrinho);
+        carrinhoService.deleteById(carrinho.getIdCarrinho());
         Carrinho novoCarrinho = new Carrinho();
         model.addAttribute("carrinho",novoCarrinho);
-        return "redirect:/home/carrinho/ver";
+        
+        String message = URLEncoder.encode(messageBuilder.toString(), StandardCharsets.UTF_8);
+        String whatsappUrl = "https://wa.me/5511?text=" + message;
+        return "redirect:" + whatsappUrl;
     }
      
     /*@GetMapping("/editar/{id}")

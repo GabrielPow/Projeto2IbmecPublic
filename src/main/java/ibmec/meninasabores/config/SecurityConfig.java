@@ -36,10 +36,10 @@ public class SecurityConfig {
                 .permitAll()
                 )
                 .logout((logout) -> logout
-                .logoutUrl("/home/logout") // URL de logout
-                .logoutSuccessUrl("/home") // Redirecionar para /index após logout
-                .permitAll()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST")) // Logout via POST
+                        .logoutUrl("/home/logout") // URL for logout
+                        .logoutSuccessUrl("/home") // Redirect to /home after logout
+                        .permitAll()
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/home/logout", "POST")) // Logout via POST);
                 );
         return http.build();
     }

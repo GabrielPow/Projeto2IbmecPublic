@@ -47,4 +47,8 @@ public class CategoriaService {
     public Categoria update(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
+    
+    public long count() {
+        return categoriaRepository.count();
+    }
 }

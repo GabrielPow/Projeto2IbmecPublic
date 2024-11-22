@@ -103,9 +103,13 @@
                             </a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr th:if="${#lists.isEmpty(carrinho.cProdutos)}">
+                        <td colspan="5" class="text-center">Nenhum item no carrinho</td>
+                    </tr>
+                    <tr th:unless="${#lists.isEmpty(carrinho.cProdutos)}">
                         <td colspan="3" class="text-end"><strong>Total Geral: R$</strong> <span th:text="${carrinho.percentual}">0,00</span></td>
                     </tr>
+
             </tbody>
         </table>
             <form th:action="@{/home/carrinho/exportarCarrinho}" method="post">

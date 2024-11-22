@@ -33,9 +33,9 @@ public class Cliente implements Serializable {
     @Column(name = "ID_CLIENTE")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCliente;
-    @Column(name = "NOME_COMPLETO", nullable = false, unique = true, length = 50)
+    @Column(name = "NOME_COMPLETO", nullable = false, length = 50)
     private String nomec;
-    @Column(name = "EMAIL", nullable = false, unique = true, length = 20)
+    @Column(name = "EMAIL", nullable = false, length = 20)
     private String email;
     @OneToMany(mappedBy ="cliente")
     private List<Carrinho> carrinhos = new ArrayList<>();
