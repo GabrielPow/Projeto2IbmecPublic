@@ -25,12 +25,12 @@
 </head>
 <body>
     <div class="container mt-4">
-        <a href="#" th:href="@{/admin/files/listar}" class="btn btn-info btn-right">Voltar</a>
+        <a href="#" th:href="@{/admin/newsletter/listar}" class="btn btn-info btn-right">Voltar</a>
         <h1>Confirmar Exclusão</h1>
-        <p>Tem certeza de que deseja excluir a imagem <span th:text="${imagem.name}">Nome do Padrão</span>?</p>
-        <form action="#" th:action="@{/admin/files/excluir/{id}(id=${imagem.id})}" method="post">
+        <p>Tem certeza de que deseja excluir este Email?</p>
+        <form action="#" th:action="@{/admin/newsletter/excluir/{id}(id=${newsletter.idNewsletter})}" method="post">
             <button type="submit" class="btn btn-danger">Excluir</button>
-            <a href="#" th:href="@{/admin/files/listar}" class="btn btn-secondary">Cancelar</a>
+            <a href="#" th:href="@{/admin/produto/listar}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

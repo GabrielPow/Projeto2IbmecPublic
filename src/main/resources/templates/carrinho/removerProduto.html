@@ -30,7 +30,7 @@
         <p>Tem certeza de que deseja excluir o produto <span th:text="${produto.nome}">Nome do Pedido</span>?</p>
         <form action="#" th:action="@{/home/carrinho/excluirProduto/{id}(id=${produto.idProduto})}" method="post">
             <button type="submit" class="btn btn-danger">Excluir</button>
-            <a href="#" th:href="@{/ibmec-test/produto/listar}" class="btn btn-secondary">Cancelar</a>
+            <a href="#" th:href="@{/home/carrinho/ver}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

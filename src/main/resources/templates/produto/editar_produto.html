@@ -99,7 +99,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <div th:replace="/produto/navbaradm :: navbaradm"></div>
+    <div th:replace="~{/produto/navbaradm :: navbaradm}"></div>
 
     <!-- Formulário de Edição -->
     <div class="container form-editar-produto-container">
@@ -118,12 +118,12 @@
 
             <div class="mb-3">
                 <label for="percentual">Preço</label>
-                <input type="number" class="form-control" id="percentual" th:field="*{percentual}" placeholder="percentual" step="0.01" required>
+                <input type="number" class="form-control" id="percentual" th:field="*{percentual}" placeholder="Preço" step="0.01" required>
             </div>
 
             <div class="mb-3">
                 <label for="descricao" class="form-editar-produto-label">Descrição</label>
-                <textarea id="descricao" name="descricao" rows="3" required th:field="*{descricao}" class="form-adicionar-produto-textarea"></textarea>
+                <textarea id="descricao" name="descricao" rows="3" required th:field="*{descricao}" class="form-editar-produto-textarea"></textarea>
             </div>
             
             <div class="mb-3">

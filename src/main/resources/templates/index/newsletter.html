@@ -4,8 +4,8 @@
     <h2>Cadastre-se na nossa Newsletter</h2>
     <p>Receba novidades, ofertas exclusivas e muito mais direto no seu email!</p>
     <div class="newsletter-form-container">
-      <form action="{{ url_for('enviar_newsletter') }}" method="GET" class="newsletter-form">
-        <input type="email" name="email" placeholder="Digite seu email" required>
+      <form th:action="@{/home/salvarNewsletter}" method="GET" class="newsletter-form">
+          <input type="email" name="email" th:name="email" placeholder="Digite seu email" required>
         <button type="submit">Inscrever-se</button>
       </form>
     </div>

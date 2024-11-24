@@ -23,14 +23,24 @@
                         <li><a class="dropdown-item" href="/adicionar-produto" th:href="@{/admin/produto/novo}">Adicionar Produto</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="contentManagementDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Gestão de Conteúdo
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="contentManagementDropdown">
+                        <li><a class="dropdown-item" th:href="@{/admin/categoria/listar}">Categoria</a></li>
+                        <li><a class="dropdown-item" th:href="@{/admin/files/listar}">Imagens</a></li>
+                        <li><a class="dropdown-item" th:href="@{/admin/mensagem/listar}">Mensagens</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/gestao-pedidos" th:href="@{/admin/carrinho/pedidos}">Gestão de Pedidos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/gestao-pedidos" th:href="@{/admin/files/upload-page}">Gestão de Imagens</a>
+                    <a class="nav-link" th:href="@{/admin/newsletter/listar}">Newsletter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/gestao-pedidos" th:href="@{/admin/categoria/listar}">Gestão de Categoria</a>
+                    <a class="nav-link" th:href="@{/admin/produto/vendidos}">Mais Vendidos</a>
                 </li>
                 <li class="nav-item">
                     <form th:action="@{/home/logout}" method="post">

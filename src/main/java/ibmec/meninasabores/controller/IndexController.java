@@ -4,14 +4,15 @@
  */
 package ibmec.meninasabores.controller;
 
-import ibmec.meninasabores.model.Carrinho;
+
 import ibmec.meninasabores.model.ImagemEntity;
 import ibmec.meninasabores.model.Mensagen;
+import ibmec.meninasabores.model.Newsletter;
 import ibmec.meninasabores.model.Produto;
 import ibmec.meninasabores.service.ImagemService;
 import ibmec.meninasabores.service.MensagenService;
 import ibmec.meninasabores.service.ProdutoService;
-import java.util.Comparator;
+import ibmec.meninasabores.service.NewsletterService;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -22,7 +23,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +44,9 @@ public class IndexController {
     
     @Autowired
     private MensagenService mensagenService;
+    
+    @Autowired
+    private NewsletterService newsletterService;
     
     @GetMapping({"","/","principal"})
     public String index(ModelMap model) {
@@ -196,6 +199,13 @@ public class IndexController {
         Mensagen mensagen = new Mensagen(nome,email,celular,estado,cidade,mensagem);
         mensagenService.save(mensagen);
         return "redirect:/home/contato";
+     }
+    
+    @GetMapping("/salvarNewsletter")
+    public String salvarNewsletter(@RequestParam(value = "email", required = true) String email) {
+        Newsletter newsletter = new Newsletter(email);
+        newsletterService.save(newsletter);
+        return "redirect:/home";
      }
     
     

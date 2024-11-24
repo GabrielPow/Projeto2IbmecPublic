@@ -180,6 +180,19 @@
             </div>
             
             <div class="col-md-3">
+                <!-- Estatísticas de Newsletter -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Ver Newsletter</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Veja os inscritos da Newsletter: <strong th:text="${totalNewsletter}">0</strong></p>
+                        <a th:href="@{/admin/newsletter/listar}" class="btn btn-primary">Ver Newsletter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
                 <!-- Estatísticas de Vendidos -->
                 <div class="card mb-4">
                     <div class="card-header">
@@ -191,6 +204,7 @@
                     </div>
                 </div>
             </div>
+            
             
         </div>
 
@@ -209,8 +223,9 @@
                             <li><a href="/gestao-contas" th:href="@{/admin/files/listar}" class="btn btn-link">Gestão de Imagens</a></li>
                             <li><a href="/gestao-mensagens" th:href="@{/admin/mensagem/listar}" class="btn btn-link">Gestão de Mensagens</a></li>
                             <li><a th:href="@{/admin/produto/vendidos}" class="btn btn-link">Ver Vendidos</a></li>
+                            <li><a th:href="@{/admin/newsletter/listar}" class="btn btn-link">Ver Newsletter</a></li>
                             <li>
-                                <a href="#" onclick="document.getElementById('logoutForm').submit();" class="btn btn-link">Logout</a>
+                                <a href="#" onclick="document.getElementById('logoutForm').submit();" class="btn btn-link">Sair</a>
                                 <form id="logoutForm" th:action="@{/home/logout}" method="post" style="display:none;">
                                     <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
                                 </form>

@@ -82,6 +82,12 @@
             background-color: #f0f0f0;
             cursor: pointer;
         }
+        
+        table img {
+        max-width: 150px;
+        max-height: 150px; 
+        object-fit: cover; 
+        }
 
         /* Links de ações */
         .action-link {
@@ -109,7 +115,7 @@
 <body>
     
     <header>
-        <div th:replace="/produto/navbaradm :: navbaradm"> </div> <!-- Navbar -->
+        <div th:replace="~{/produto/navbaradm :: navbaradm}"> </div> <!-- Navbar -->
     </header>
 
     <div class="container">
@@ -123,19 +129,21 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Imagem</th>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Destaque</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                     <tr th:each="produto : ${produtos}">
-                        <td th:text="${produto.idProduto}"></td>
+                        <td><img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" class="img-fluid"></td>
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.percentual}"></td>
-                        <td th:text="${produto.descricao}"></td>
+                        <td th:text="${produto.status}"></td>
+                        <td th:text="${produto.emdestaque}"></td>
                         <td>
                             <a href="{{ url_for('editar_produto', produto_id=produto_id) }}" th:href="@{/admin/produto/editar/{id}(id=${produto.idProduto})}" class="action-link">Editar</a> |
                             <a href="{{ url_for('remover_produto', produto_id=produto_id) }}" th:href="@{/admin/produto/remover/{id}(id=${produto.idProduto})}" class="action-link">Remover</a>
@@ -146,7 +154,7 @@
     </div>
 
    <footer>
-     <div th:replace="/index/rodape :: rodape"> </div>
+     <div th:replace="~{/index/rodape :: rodape}"> </div>
    </footer>
 
     <!-- Scripts do Bootstrap -->

@@ -86,10 +86,10 @@
       <!-- Links Rápidos -->
       <div class="col-md-4 mb-4">
         <ul class="list-unstyled">
-          <li><a href="{{ url_for('index') }}" class="footer-link">Início</a></li>
-          <li><a href="{{ url_for('quem_somos') }}" class="footer-link">Quem Somos</a></li>
-          <li><a href="{{ url_for('lista_produtos') }}" class="footer-link">Produtos</a></li>
-          <li><a href="{{ url_for('contato') }}" class="footer-link">Contato</a></li>
+          <li><a th:href="@{/home}" class="footer-link">Início</a></li>
+          <li><a th:href="@{/home/quemsomos}" class="footer-link">Quem Somos</a></li>
+          <li><a th:href="@{/home/produtos}" class="footer-link">Produtos</a></li>
+          <li><a th:href="@{/home/contato}" class="footer-link">Contato</a></li>
         </ul>
       </div>
 

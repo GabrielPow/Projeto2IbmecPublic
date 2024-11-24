@@ -11,6 +11,7 @@ import ibmec.meninasabores.model.Produto;
 import ibmec.meninasabores.service.CategoriaService;
 import ibmec.meninasabores.service.ImagemService;
 import ibmec.meninasabores.service.MensagenService;
+import ibmec.meninasabores.service.NewsletterService;
 import ibmec.meninasabores.service.PedidosService;
 import ibmec.meninasabores.service.ProdutoService;
 import jakarta.validation.Valid;
@@ -55,6 +56,9 @@ public class ProdutoController {
     @Autowired
     private MensagenService mensagemService;
     
+    @Autowired
+    private NewsletterService newsletterService;
+    
     @GetMapping("/painel")
     public String painel(ModelMap model) {
         model.addAttribute("totalProdutos", produtoService.count());
@@ -62,6 +66,7 @@ public class ProdutoController {
         model.addAttribute("totalImagens", imageService.count());
         model.addAttribute("totalPedidos", pedidoService.count());
         model.addAttribute("totalMensagens", mensagemService.count());
+        model.addAttribute("totalNewsletter", newsletterService.count());
         return "/produto/paineladm";
     }
     
