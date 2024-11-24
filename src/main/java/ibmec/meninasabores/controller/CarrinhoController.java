@@ -133,7 +133,7 @@ public class CarrinhoController {
         model.addAttribute("carrinho",novoCarrinho);
         
         String message = URLEncoder.encode(messageBuilder.toString(), StandardCharsets.UTF_8);
-        String whatsappUrl = "https://wa.me/5511952681998?text=" + message;
+        String whatsappUrl = "https://wa.me/5511?text=" + message;
         return "redirect:" + whatsappUrl;
     }
      
