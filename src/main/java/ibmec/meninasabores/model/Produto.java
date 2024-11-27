@@ -32,7 +32,7 @@ public class Produto implements Serializable {
     @Column(name = "ID_PRODUTO")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProduto;
-    @Column(name = "NOME", nullable = false, unique = true, length = 20)
+    @Column(name = "NOME", nullable = false, unique = true, length = 60)
     private String nome;
     @Column(name = "PRECO", nullable = false)
     private double percentual;
