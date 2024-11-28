@@ -146,10 +146,15 @@ public class ProdutoController {
      
      @PostMapping("/atualizar")
      public String atualizar(@Valid @ModelAttribute Produto produto,
-             BindingResult bindingResult, ModelMap model) {
+             BindingResult bindingResult, ModelMap model,  @RequestParam("status") boolean status) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("produto", produto);
              return "produto/editar";
+         }
+         if (status == true) {
+             produto.setStatus("SIM");
+         } else {
+             produto.setStatus("NÃO");
          }
          produtoService.update(produto);
          return "redirect:/admin/produto/listar";
