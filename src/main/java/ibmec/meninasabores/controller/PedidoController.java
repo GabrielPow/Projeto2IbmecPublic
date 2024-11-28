@@ -36,14 +36,14 @@ public class PedidoController {
          List<Pedidos> sortedCarrinhos = pedidos.stream()
                  .collect(Collectors.toList());
          model.addAttribute("pedidos", sortedCarrinhos);
-         return "/carrinho/lista_carrinho";
+         return "carrinho/lista_carrinho";
     }
     
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, ModelMap model) {
         Pedidos pedido = pedidoService.findById(id).orElse(null);
          model.addAttribute("pedido", pedido);
-         return "/carrinho/editar_carrinho";
+         return "carrinho/editar_carrinho";
     }
      
     @PostMapping("/atualizar")
@@ -51,7 +51,7 @@ public class PedidoController {
              BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("pedido", pedido);
-             return "/carrinho/editar_carrinho";
+             return "carrinho/editar_carrinho";
          }
          pedidoService.update(pedido);
          return "redirect:/admin/carrinho/pedidos";
@@ -62,7 +62,7 @@ public class PedidoController {
     public String remover(@PathVariable Long id, ModelMap model) {
          model.addAttribute("pedido",pedidoService.findById(id).orElseThrow(() ->
                  new RuntimeException("Pedidos não encontrado")));
-         return "/carrinho/remover";
+         return "carrinho/remover";
     }
      
     @PostMapping("/excluir/{id}")
