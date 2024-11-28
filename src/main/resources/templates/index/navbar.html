@@ -1,7 +1,7 @@
 <!-- Navbar HTML -->
 <nav class="navbar navbar-expand-lg navbar-custom fixed-top shadow align-items-center" th:fragment="navbar">
   <div class="container">
-    <a class="navbar-brand" href="{{ url_for('index') }}" th:href="@{/home}">Menina Sabores</a>
+    <a class="navbar-brand" href="{{ url_for('index') }}" th:href="@{home}">Menina Sabores</a>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       <form class="d-lg-none mb-3 d-flex" action="{{ url_for('buscar_produtos') }}" method="GET">
         <input class="form-control me-2" type="search" name="query" placeholder="Buscar..." aria-label="Buscar">
@@ -20,26 +20,26 @@
             Produtos
           </a>
           <ul class="dropdown-menu dropdown-custom" aria-labelledby="produtosDropdown">
-            <li><a class="dropdown-item" th:href="@{/home/produtos}">Todos os Produtos</a></li>
-            <li><a class="dropdown-item" th:href="@{/home/produtos/geleias}">Geleias</a></li>
-            <li><a class="dropdown-item" th:href="@{/home/produtos/licores}">Licores</a></li>
-            <li><a class="dropdown-item" th:href="@{/home/produtos/doces}">Doces</a></li>
+            <li><a class="dropdown-item" th:href="@{home/produtos}">Todos os Produtos</a></li>
+            <li><a class="dropdown-item" th:href="@{home/produtos/geleias}">Geleias</a></li>
+            <li><a class="dropdown-item" th:href="@{home/produtos/licores}">Licores</a></li>
+            <li><a class="dropdown-item" th:href="@{home/produtos/doces}">Doces</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if active == 'contato' %}active{% endif %}" href="{{ url_for('contato') }}" th:href="@{/home/contato}">Contato</a>
+          <a class="nav-link {% if active == 'contato' %}active{% endif %}" href="{{ url_for('contato') }}" th:href="@{home/contato}">Contato</a>
         </li>
       </ul>
     </div>
     <div class="d-flex align-items-center">
-      <form class="d-none d-lg-flex me-3" th:action="@{/home/buscar_produtos}" method="GET">
+      <form class="d-none d-lg-flex me-3" th:action="@{home/buscar_produtos}" method="GET">
         <input class="form-control" th:value="${query}" type="search" name="query" placeholder="Buscar..." aria-label="Buscar">
         <button class="btn btn-outline-light ms-2" type="submit"><i class="fas fa-search"></i></button>
       </form>
       <a href="{{ url_for('cart') }}" th:href="@{/home/carrinho/ver}" class="nav-link cart-icon me-2">
         <i class="fas fa-shopping-bag"></i>
       </a>
-      <a href="{{ url_for('login') }}" th:href="@{/home/login}" class="nav-link cart-icon ms-3">
+      <a href="{{ url_for('login') }}" th:href="@{home/login}" class="nav-link cart-icon ms-3">
         <i class="fas fa-user"></i>
       </a>
       <button class="navbar-toggler d-lg-none align-self-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" id="menu-button" style="margin-top: -4px; margin-left: 15px;">
