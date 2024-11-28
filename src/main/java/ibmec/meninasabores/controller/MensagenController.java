@@ -48,7 +48,7 @@ public class MensagenController {
     public String remover(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("mensagem",mensagenService.findById(id).orElseThrow(() ->
                  new RuntimeException("Mensagen não encontrado")));
-         return "/mensagen/remover";
+         return "mensagen/remover";
     }
      
     @PostMapping("/excluir/{id}")
