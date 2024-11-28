@@ -47,7 +47,7 @@ public class NewsletterController {
     public String remover(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("newsletter",newsletterService.findById(id).orElseThrow(() ->
                  new RuntimeException("Newsletter não encontrado")));
-         return "/newsletter/remover";
+         return "newsletter/remover";
     }
      
     @PostMapping("/excluir/{id}")
