@@ -491,21 +491,21 @@ h2 {
 <section class="categorias container my-5">
   <div class="row text-center">
     <div class="col-lg-4 col-md-6 mb-4">
-      <a th:href="@{/home/quemsomos}" class="categoria-link">
+      <a th:href="@{home/quemsomos}" class="categoria-link">
         <img src="/images/index/quemsomos.png" class="img-fluid rounded-circle" alt="Categoria 1">
         <h3>Quem Somos</h3>
         <p>A história e o respeito à tradição como identidade!</p>
       </a>
     </div>
     <div class="col-lg-4 col-md-6 mb-4">
-      <a th:href="@{/home/produtos}" class="categoria-link">
+      <a th:href="@{home/produtos}" class="categoria-link">
         <img src="/images/index/licores.png" class="img-fluid rounded-circle" alt="Categoria 2">
         <h3>Produtos</h3>
         <p>Participe dessa experiência marcante!</p>
       </a>
     </div>
     <div class="col-lg-4 col-md-12 mb-4">
-      <a th:href="@{/home/contato}" class="categoria-link">
+      <a th:href="@{home/contato}" class="categoria-link">
         <img src="/images/index/geleia.png" class="img-fluid rounded-circle" alt="Categoria 3">
         <h3>Contato</h3>
         <p>Conheça nossos produtos!</p>
@@ -521,13 +521,13 @@ h2 {
     <div class="swiper-wrapper">
       <div class="swiper-slide" th:each="produto : ${produtosTodos}">
             <div class="product-card">
-              <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" th:alt="${produto.nome}">
+              <img th:src="@{home/files/ver/{id}(id=${produto.imagem.id})}" th:alt="${produto.nome}">
               <h3 th:text="${produto.nome}">Produto Nome</h3>
               <span class="d-inline-block text-truncate" style="max-width: 150px;">
                  <p class="descricao" th:text="${produto.descricao}"></p>
               </span>
               <p><strong th:text="${produto.percentual}">Preco</strong></p>
-              <a th:href="@{/home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-primary">Mais Detalhes</a>
+              <a th:href="@{home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-primary">Mais Detalhes</a>
             </div>
       </div>
     </div>
