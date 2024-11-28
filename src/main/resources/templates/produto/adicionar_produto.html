@@ -114,7 +114,7 @@
             
             <div class="mb-3">
                 <label for="status">Disponivel</label>
-                <select class="form-control" th:field="*{status}" id="status">
+                <select class="form-control" th:name="status" id="status">
                     <option th:value="true" th:text="Sim"></option>
                     <option th:value="false" th:text="Não"></option>
                     <option hidden th:value="NÃO"></option>
