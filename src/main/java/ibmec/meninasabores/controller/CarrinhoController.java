@@ -69,7 +69,7 @@ public class CarrinhoController {
                  .filter(carrinho -> !"Comprando".equals(carrinho.getStatus()))
                  .collect(Collectors.toList());
          model.addAttribute("carrinhos", sortedCarrinhos);
-         return "/carrinho/lista_carrinho";
+         return "carrinho/lista_carrinho";
     }*/
 
     @PostMapping("/salvarProduto/{id}")
@@ -175,7 +175,7 @@ public class CarrinhoController {
                  model.addAttribute("produto",test);
              }
          }
-         return "/carrinho/removerProduto";
+         return "carrinho/removerProduto";
     }
 
 
