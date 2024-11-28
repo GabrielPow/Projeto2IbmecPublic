@@ -57,7 +57,7 @@ public class IndexController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtosTodos", sortedProdutos);
-        return "/index/index";
+        return "index/index";
     }
     
     @GetMapping("contato")
