@@ -62,12 +62,12 @@ public class IndexController {
     
     @GetMapping("contato")
     public String contato() {
-        return "/index/contato_1";
+        return "index/contato_1";
     }
     
     @GetMapping("quemsomos")
     public String quemsomos() {
-        return "/index/quemsomos";
+        return "index/quemsomos";
     }
     
     @PostMapping("/logout")
@@ -77,7 +77,7 @@ public class IndexController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "/index/login"; // templates/login.html
+        return "index/login"; // templates/login.html
     }
     
     @GetMapping("/buscar_produtos")
@@ -90,7 +90,7 @@ public class IndexController {
                 .collect(Collectors.toList());
         model.addAttribute("produtosQuery", filteredProdutos);
         model.addAttribute("query", query);
-        return "/produto/produto";
+        return "produto/produto";
     }
     
     @GetMapping("/produtos")
@@ -119,7 +119,7 @@ public class IndexController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtosDoce", ProdutosDoce);
-        return "/produto/produto";
+        return "produto/produto";
     }
     
     @GetMapping("/produtos/geleias")
@@ -131,7 +131,7 @@ public class IndexController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtosGeleia", ProdutosGeleia);
-        return "/produto/produto";
+        return "produto/produto";
     }
     
     @GetMapping("/produtos/licores")
@@ -143,7 +143,7 @@ public class IndexController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtosLicor", ProdutosLicor);
-        return "/produto/produto";
+        return "produto/produto";
     }
     
     @GetMapping("/produtos/doces")
@@ -155,14 +155,14 @@ public class IndexController {
                 .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                 .collect(Collectors.toList());
         model.addAttribute("produtosDoce", ProdutosDoce);
-        return "/produto/produto";
+        return "produto/produto";
     }
     
     @GetMapping("/vizualizar/{id}")
     public String vizualizar(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("produto",produtoService.findById(id).orElseThrow(() ->
                  new RuntimeException("Produto não encontrado")));
-         return "/produto/productpage";
+         return "produto/productpage";
     }
     
     @GetMapping("files/ver/{id}")
