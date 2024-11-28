@@ -122,7 +122,12 @@ public class ProdutoController {
      }*/
      
      @PostMapping("/salvar")
-     public String salvar(Produto produto) {
+     public String salvar(Produto produto, @RequestParam("status") boolean status) {
+         if (status == true) {
+             produto.setStatus("SIM");
+         } else {
+             produto.setStatus("NÃO");
+         }
          produtoService.save(produto);
          return "redirect:/admin/produto/listar";
      }
