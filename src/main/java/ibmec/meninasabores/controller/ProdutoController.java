@@ -67,7 +67,7 @@ public class ProdutoController {
         model.addAttribute("totalPedidos", pedidoService.count());
         model.addAttribute("totalMensagens", mensagemService.count());
         model.addAttribute("totalNewsletter", newsletterService.count());
-        return "/produto/paineladm";
+        return "produto/paineladm";
     }
     
     @GetMapping("/listar")
@@ -77,7 +77,7 @@ public class ProdutoController {
                  .sorted((produto1, produto2) -> produto1.getNome().compareTo(produto2.getNome()))
                  .collect(Collectors.toList());
          model.addAttribute("produtos", sortedProdutos);
-         return "/produto/lista_produtos";
+         return "produto/lista_produtos";
      }
      
      
@@ -87,7 +87,7 @@ public class ProdutoController {
          List<ImagemEntity> imagens = imageService.findAll();
          model.addAttribute("imagens",imagens);
          model.addAttribute("categorias",categorias);
-         return "/produto/adicionar_produto";
+         return "produto/adicionar_produto";
      }
      
     /*@GetMapping("/listaProduto")
@@ -134,7 +134,7 @@ public class ProdutoController {
          model.addAttribute("categorias", categorias);
          List<ImagemEntity> imagens = imageService.findAll();
          model.addAttribute("imagens",imagens);
-         return "/produto/editar_produto";
+         return "produto/editar_produto";
      }
      
      @PostMapping("/atualizar")
@@ -142,7 +142,7 @@ public class ProdutoController {
              BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("produto", produto);
-             return "/produto/editar";
+             return "produto/editar";
          }
          produtoService.update(produto);
          return "redirect:/admin/produto/listar";
@@ -153,7 +153,7 @@ public class ProdutoController {
      public String remover(@PathVariable UUID id, ModelMap model) {
          model.addAttribute("produto",produtoService.findById(id).orElseThrow(() ->
                  new RuntimeException("Produto não encontrado")));
-         return "/produto/remover";
+         return "produto/remover";
      }
      
      @PostMapping("/excluir/{id}")
@@ -190,6 +190,6 @@ public class ProdutoController {
             contaProdutoNome.put(produtoNome, total);
          }
          model.addAttribute("contaProdutos", contaProdutoNome);
-         return "/produto/lista_estatistica";
+         return "produto/lista_estatistica";
      }
 }
