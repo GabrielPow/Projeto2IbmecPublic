@@ -62,7 +62,7 @@ public class ImageController {
                 .sorted((imagen1, imagen2) -> imagen1.getName().compareTo(imagen2.getName()))
                 .collect(Collectors.toList());
         model.addAttribute("imagens", sortedImagens);
-        return "/files/lista_imagens";
+        return "files/lista_imagens";
     }
 
     // Método para download do arquivo
@@ -103,7 +103,7 @@ public class ImageController {
     public String remover(@PathVariable Long id, ModelMap model) {
         model.addAttribute("imagem",ImageService.findById(id).orElseThrow(() ->
             new RuntimeException("Imagem não encontrado")));
-        return "/files/remover";
+        return "files/remover";
      }
      
     @PostMapping("/excluir/{id}")
