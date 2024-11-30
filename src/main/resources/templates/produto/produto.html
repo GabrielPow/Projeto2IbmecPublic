@@ -202,7 +202,9 @@
         <div class="product-card">
           <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" th:alt="${produto.nome}" />
           <h3 th:text="${produto.nome}"></h3>
-          <p th:text="${produto.descricao}"></p>
+          <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                <p th:text="${produto.descricao}"></p>
+          </span>
           <p><strong th:text="${produto.percentual}"></strong></p>
           <a th:href="@{/home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-primary">Mais Detalhes</a>
         </div>
@@ -220,7 +222,9 @@
           <div class="product-card">
             <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" th:alt="${produto.nome}" />
             <h3 th:text="${produto.nome}"></h3>
-            <p th:text="${produto.descricao}"></p>
+            <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                  <p th:text="${produto.descricao}"></p>
+            </span>
             <p><strong th:text="${produto.percentual}"></strong></p>
             <a th:href="@{/home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-primary">Mais Detalhes</a>
           </div>
@@ -238,7 +242,9 @@
           <div class="product-card">
             <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" th:alt="${produto.nome}" />
             <h3 th:text="${produto.nome}"></h3>
-            <p th:text="${produto.descricao}"></p>
+            <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                <p th:text="${produto.descricao}"></p>
+            </span>
             <p><strong th:text="${produto.percentual}"></strong></p>
             <a th:href="@{/home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-primary">Mais Detalhes</a>
           </div>
@@ -256,7 +262,9 @@
           <div class="product-card">
             <img th:src="@{/home/files/ver/{id}(id=${produto.imagem.id})}" th:alt="${produto.nome}" />
             <h3 th:text="${produto.nome}"></h3>
-            <p th:text="${produto.descricao}"></p>
+            <span class="d-inline-block text-truncate" style="max-width: 150px;">
+              <p th:text="${produto.descricao}"></p>
+            </span>
             <p><strong th:text="${produto.percentual}"></strong></p>
             <a th:href="@{/home/vizualizar/{id}(id=${produto.idProduto})}" class="btn btn-primary">Mais Detalhes</a>
           </div>
