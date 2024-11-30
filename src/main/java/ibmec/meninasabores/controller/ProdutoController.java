@@ -124,12 +124,7 @@ public class ProdutoController {
      }*/
      
      @PostMapping("/salvar")
-     public String salvar(Produto produto, @RequestParam("status") boolean status) {
-         if (status == true) {
-             produto.setStatus("SIM");
-         } else {
-             produto.setStatus("NÃO");
-         }
+     public String salvar(Produto produto) {
          produtoService.save(produto);
          return "redirect:/admin/produto/listar";
      }
@@ -146,15 +141,10 @@ public class ProdutoController {
      
      @PostMapping("/atualizar")
      public String atualizar(@Valid @ModelAttribute Produto produto,
-             BindingResult bindingResult, ModelMap model,  @RequestParam("status") boolean status) {
+             BindingResult bindingResult, ModelMap model) {
          if (bindingResult.hasErrors()) {
              model.addAttribute("produto", produto);
              return "produto/editar";
-         }
-         if (status == true) {
-             produto.setStatus("SIM");
-         } else {
-             produto.setStatus("NÃO");
          }
          produtoService.update(produto);
          return "redirect:/admin/produto/listar";
