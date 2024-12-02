@@ -35,7 +35,7 @@ public class Cliente implements Serializable {
     private Long idCliente;
     @Column(name = "NOME_COMPLETO", nullable = false, length = 50)
     private String nomec;
-    @Column(name = "EMAIL", nullable = false, length = 20)
+    @Column(name = "EMAIL", nullable = false)
     private String email;
     @OneToMany(mappedBy ="cliente")
     private List<Carrinho> carrinhos = new ArrayList<>();
